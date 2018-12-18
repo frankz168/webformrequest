@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebDelamiFormRequest.SiteMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title>Web Delami Form Request</title>
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference ID="BundleReference1" runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <asp:ScriptManager ID="ScriptManagerMain" runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=272931&clcid=0x409 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="jquery.ui.combined" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                        <a id="A1" runat="server" href="~/MainMenu.aspx">
+                            <img id="Img1" runat="server" src="~/Images/logo.png" /></a>
+                    </p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        <asp:Label ID="label_Welcome" runat="server" Text="Welcome :" Style="font-size: 1.2em; font-weight: 500;"></asp:Label>&nbsp;
+                    <asp:Label ID="label_Username" runat="server" Style="font-size: 1.2em; font-weight: 500;"></asp:Label><br />
+                        <asp:Label ID="label_Jabatan" runat="server" Text="Admin Operation" Style="font-size: 1.2em; font-weight: 500;" />
+                        &nbsp;
+                    <asp:Label ID="label_Department" runat="server" Text="creative" Style="font-size: 1.2em; font-weight: 500;" />
+                        <BR />
+                   <asp:Label ID="label_brand" runat="server" Text="Executive" Style="font-size: 1.2em; font-weight: 500;" />
+                        <br />
+
+                        &nbsp;
+                        <asp:Button ID="label_resetpassword" runat="server" Text="Reset Password" OnClick="label_resetpassword_Click"></asp:Button>
+                        &nbsp;
+                        <asp:Button ID="label_Logout" runat="server" Text="Logout" OnClick="lbLogoutClick"></asp:Button>
+                    </section>
+                    <nav>
+
+                        <ul id="menu">
+                            <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu"
+                                EnableViewState="False" IncludeStyleBlock="true" Orientation="Horizontal">
+                            </asp:Menu>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+            <section class="content-wrapper main-content clear-fix">
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; <%: DateTime.Now.Year %> - Delami Brands Application Form Request</p>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
