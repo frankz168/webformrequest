@@ -881,8 +881,20 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
             if (btn_uploadfilestore.PostedFile != null)
             {
+
                 try
                 {
+                    string ext = System.IO.Path.GetExtension(this.btn_uploadfilestore.PostedFile.FileName).ToLower();
+
+                    if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg" || ext != ".pdf")
+                    {
+                        DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.xlsx)";
+                        DivMessage.Attributes["class"] = "error";
+                        //DivMessage.Attributes["class"] = "success";
+                        DivMessage.Visible = true;
+                        link_filenameuploadstore.Text = "-";
+                        return;
+                    }
 
                     string path = string.Concat(Server.MapPath("~/Files/" + btn_uploadfilestore.FileName));
                     btn_uploadfilestore.SaveAs(path);
@@ -1035,6 +1047,17 @@ namespace WebDelamiFormRequest.Forms_Data_Process
             {
                 try
                 {
+                    string ext = System.IO.Path.GetExtension(this.btn_uploadfilematerial.PostedFile.FileName).ToLower();
+
+                    if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg" || ext != ".pdf")
+                    {
+                        DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.xlsx)";
+                        DivMessage.Attributes["class"] = "error";
+                        //DivMessage.Attributes["class"] = "success";
+                        DivMessage.Visible = true;
+                        link_filenameuploadmaterial.Text = "-";
+                        return;
+                    }
 
                     string path = string.Concat(Server.MapPath("~/Files/" + btn_uploadfilematerial.FileName));
                     btn_uploadfilematerial.SaveAs(path);
@@ -6998,6 +7021,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 DataSet Ds = new DataSet();
 
                 string NO_FORM = text_noform.Text;
+                string KOMENTAR = text_commentar.Text;
                 string DITERIMA_LAIN_1 = text_diterimalain1.Text;
                 DateTime TGL_DITERIMA_LAIN_1 = DateTime.Now;
 
@@ -7006,6 +7030,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform1gdr.DITERIMA_LAIN_1 = DITERIMA_LAIN_1;
                 trform1gdr.TGL_DITERIMA_LAIN_1 = TGL_DITERIMA_LAIN_1;
                 trform1gdr.STATUS = EApprovalStatus.Cancel;
+                trform1gdr.REVISI = KOMENTAR;
                 //trform1gdr.REVISI = "";
                 trform1gdr.USER_CURRENT = HfUsername.Value;
                 trform1gdr.NEXT_USER = "-";
@@ -7023,7 +7048,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform1gdractivity.NO_FORM = NO_FORM;
                 trform1gdractivity.STATUS = EApprovalStatus.Cancel;
                 trform1gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
-                trform1gdractivity.REVISION = "-";
+                trform1gdractivity.REVISION = KOMENTAR;
                 trform1gdractivity.URUTAN = 5;
                 trform1gdractivity.SP = "";
                 trform1gdractivity.USER_CURRENT = HfUsername.Value;
@@ -7060,6 +7085,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 DataSet Ds = new DataSet();
 
                 string NO_FORM = text_noform.Text;
+                string KOMENTAR = text_commentar.Text;
                 string DITERIMA_LAIN_3 = text_diterimalain3.Text;
                 DateTime TGL_DITERIMA_LAIN_3 = DateTime.Now;
 
@@ -7068,7 +7094,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform1gdr.DITERIMA_LAIN_3 = DITERIMA_LAIN_3;
                 trform1gdr.TGL_DITERIMA_LAIN_3 = TGL_DITERIMA_LAIN_3;
                 trform1gdr.STATUS = EApprovalStatus.Cancel;
-                //trform1gdr.REVISI = "";
+                trform1gdr.REVISI = KOMENTAR;
                 trform1gdr.USER_CURRENT = HfUsername.Value;
                 trform1gdr.NEXT_USER = "-";
                 trform1gdr.URUTAN_USER_CURRENT = 7;
@@ -7085,7 +7111,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform1gdractivity.NO_FORM = NO_FORM;
                 trform1gdractivity.STATUS = EApprovalStatus.Cancel;
                 trform1gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
-                trform1gdractivity.REVISION = "-";
+                trform1gdractivity.REVISION = KOMENTAR;
                 trform1gdractivity.URUTAN = 7;
                 trform1gdractivity.SP = "";
                 trform1gdractivity.USER_CURRENT = HfUsername.Value;
@@ -8274,6 +8300,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
             btn_Approved.Text = "Posting Photo";
             Pnl_UploadFilePG.Visible = true;
             Pnl_UploadFilePG.Enabled = true;
+            Pnl_Commentar.Visible = true;
             btn_ToRevise.Visible = true;
             btn_Reject.Visible = true;
 
@@ -8306,6 +8333,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
             btn_Approved.Text = "Posting-Retouch-Foto";
             Pnl_UploadFileDI.Visible = true;
             Pnl_UploadFileDI.Enabled = true;
+            Pnl_Commentar.Visible = true;
             btn_ToRevise.Visible = true;
             btn_Reject.Visible = true;
         }

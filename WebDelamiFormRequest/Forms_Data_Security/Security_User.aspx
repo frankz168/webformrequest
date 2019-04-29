@@ -82,8 +82,10 @@
                             <asp:Label ID="label_kodebrand" runat="server" Text="Brand : "></asp:Label>
                         </td>
                         <td class="FV270">
-                            <asp:DropDownList ID="ddlkodebrand" runat="server" Width="206px" Height="30px" DataSourceID="CT_GridBrand" DataValueField="KD_BRAND" DataTextField="BRAND">
-                            </asp:DropDownList>
+                            <asp:TextBox ID="text_kodebrand" runat="server" Width="250px"></asp:TextBox>
+                            <asp:Label ID="label_ketkodebrand" runat="server" Text="Kode Brand dapat dilihat di Master Brand. Contoh Format pengisian(91,92)"></asp:Label>
+                            <%--     <asp:DropDownList ID="ddlkodebrand" runat="server" Width="206px" Height="30px" DataSourceID="CT_GridBrand" DataValueField="KD_BRAND" DataTextField="BRAND">
+                            </asp:DropDownList>--%>
                         </td>
                     </tr>
                     <tr>

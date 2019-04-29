@@ -885,13 +885,14 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM2_GDR SET STATUS = @STATUS, DITERIMA_LAIN_1 = @DITERIMA_LAIN_1, TGL_DITERIMA_LAIN_1 = @TGL_DITERIMA_LAIN_1, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM2_GDR SET STATUS = @STATUS, REVISI = @REVISI, DITERIMA_LAIN_1 = @DITERIMA_LAIN_1, TGL_DITERIMA_LAIN_1 = @TGL_DITERIMA_LAIN_1, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform2gdr.NO_FORM;
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform2gdr.STATUS;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform2gdr.REVISI;
                     command.Parameters.Add("@DITERIMA_LAIN_1", SqlDbType.VarChar).Value = trform2gdr.DITERIMA_LAIN_1;
                     command.Parameters.Add("@TGL_DITERIMA_LAIN_1", SqlDbType.DateTime).Value = trform2gdr.TGL_DITERIMA_LAIN_1;
                     command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform2gdr.USER_CURRENT;
@@ -1058,13 +1059,14 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM2_GDR SET STATUS = @STATUS, DITERIMA_LAIN_3 = @DITERIMA_LAIN_3, TGL_DITERIMA_LAIN_3 = @TGL_DITERIMA_LAIN_3, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM2_GDR SET STATUS = @STATUS, REVISI = @REVISI, DITERIMA_LAIN_3 = @DITERIMA_LAIN_3, TGL_DITERIMA_LAIN_3 = @TGL_DITERIMA_LAIN_3, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform2gdr.NO_FORM;
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform2gdr.STATUS;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform2gdr.REVISI;
                     command.Parameters.Add("@DITERIMA_LAIN_3", SqlDbType.VarChar).Value = trform2gdr.DITERIMA_LAIN_3;
                     command.Parameters.Add("@TGL_DITERIMA_LAIN_3", SqlDbType.DateTime).Value = trform2gdr.TGL_DITERIMA_LAIN_3;
                     command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform2gdr.USER_CURRENT;

@@ -61,7 +61,7 @@ namespace WebDelamiFormRequest.Forms_Data_Security
             text_fullname.Enabled = false;
             text_password.Enabled = false;
             ddlkodedepartemen.Enabled = false;
-            ddlkodebrand.Enabled = false;
+            text_kodebrand.Enabled = false;
             ddlkodejabatan.Enabled = false;
             text_email.Enabled = false;
             ddluserprofileid.Enabled = false;
@@ -85,7 +85,7 @@ namespace WebDelamiFormRequest.Forms_Data_Security
             text_fullname.Enabled = true;
             text_password.Enabled = true;
             ddlkodedepartemen.Enabled = true;
-            ddlkodebrand.Enabled = true;
+            text_kodebrand.Enabled = true;
             ddlkodejabatan.Enabled = true;
             text_email.Enabled = true;
             ddluserprofileid.Enabled = true;
@@ -150,7 +150,7 @@ namespace WebDelamiFormRequest.Forms_Data_Security
                     text_fullname.Text = Convert.ToString(Ds.Tables[0].Rows[0]["FULL_NAME"].ToString());
                     text_password.Text = Convert.ToString(Ds.Tables[0].Rows[0]["PASSWORD"].ToString());
                     ddlkodedepartemen.Text = Convert.ToString(Ds.Tables[0].Rows[0]["ID_DEPT"].ToString());
-                    ddlkodebrand.Text = Convert.ToString(Ds.Tables[0].Rows[0]["KD_BRAND"].ToString());
+                    text_kodebrand.Text = Convert.ToString(Ds.Tables[0].Rows[0]["KD_BRAND"].ToString());
                     ddlkodejabatan.Text = Convert.ToString(Ds.Tables[0].Rows[0]["KD_JABATAN"].ToString());
                     text_email.Text = Convert.ToString(Ds.Tables[0].Rows[0]["EMAIL"].ToString());
                     ddluserprofileid.Text = Convert.ToString(Ds.Tables[0].Rows[0]["UserProfileId"].ToString());
@@ -178,7 +178,7 @@ namespace WebDelamiFormRequest.Forms_Data_Security
                 string PASSWORD = text_password.Text;
                 string ID_DEPT = ddlkodedepartemen.SelectedValue.ToString();
                 string DEPT = ddlkodedepartemen.Text;
-                string KD_BRAND = ddlkodebrand.SelectedValue.ToString();
+                string KD_BRAND = text_kodebrand.Text;
                 string KD_JABATAN = ddlkodejabatan.SelectedValue.ToString();
                 string EMAIL = text_email.Text;
                 string UserProfileId = ddluserprofileid.Text;
@@ -253,7 +253,7 @@ namespace WebDelamiFormRequest.Forms_Data_Security
                 string PASSWORD = text_password.Text;
                 string ID_DEPT = ddlkodedepartemen.SelectedValue.ToString();
                 string DEPT = ddlkodedepartemen.Text;
-                string KD_BRAND = ddlkodebrand.SelectedValue.ToString();
+                string KD_BRAND = text_kodebrand.Text;
                 string KD_JABATAN = ddlkodejabatan.SelectedValue.ToString();
                 string EMAIL = text_email.Text;
                 string UserProfileId = ddluserprofileid.Text;

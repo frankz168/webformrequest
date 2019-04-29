@@ -356,7 +356,7 @@
                     </tr>
                     <tr>
                         <td class="FN150">
-                            <asp:Label ID="label_uploadfilestore" runat="server" Text="Upload File Store: "></asp:Label>
+                            <asp:Label ID="label_uploadfilestore" runat="server" Text="Upload File Store (Format xlsx): "></asp:Label>
                         </td>
                         <td class="FV270">
 
@@ -500,7 +500,7 @@
                             <asp:Button ID="btn_jenismateri" runat="server" Text="Add Content" />
                         </td>
                         <td class="FN150">
-                            <asp:Label ID="label_uploadfilematerial" runat="server" Text="Upload File material: "></asp:Label>
+                            <asp:Label ID="label_uploadfilematerial" runat="server" Text="Upload File material (Format xlsx): "></asp:Label>
                         </td>
                         <td class="FV270" colspan="4">
 

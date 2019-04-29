@@ -130,13 +130,22 @@ namespace WebDelamiFormRequest.Forms_Data_Security {
         protected global::System.Web.UI.WebControls.Label label_kodebrand;
         
         /// <summary>
-        /// ddlkodebrand control.
+        /// text_kodebrand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlkodebrand;
+        protected global::System.Web.UI.WebControls.TextBox text_kodebrand;
+        
+        /// <summary>
+        /// label_ketkodebrand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_ketkodebrand;
         
         /// <summary>
         /// label_kodejabatan control.

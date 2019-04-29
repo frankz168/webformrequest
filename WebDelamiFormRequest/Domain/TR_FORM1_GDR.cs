@@ -80,6 +80,7 @@ namespace WebDelamiFormRequest.Domain
         public string PHOTOGRAPHER { get; set; }
         public string DIGITAL_IMAGING { get; set; }
         public string PRODUCTION { get; set; }
+        //public string KOMENTAR { get; set; }
 
     } 
 
