@@ -9,6 +9,7 @@ namespace WebDelamiFormRequest.Domain
     {
         public string KODE_FORM { get; set; }
         public string NM_FORM { get; set; }
+        public string FORM_TYPE { get; set; }
     } 
 
 }

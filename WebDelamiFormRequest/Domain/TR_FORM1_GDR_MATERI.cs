@@ -9,10 +9,11 @@ namespace WebDelamiFormRequest.Domain
     {
         public int ID_MATERI { get; set; }
         public string NO_FORM { get; set; }
+        public string site { get; set; }
+        public string nama_cust {get; set;}
         public string JENIS_MATERIAL_CETAK { get; set; }
         public string UKURAN { get; set; }
-        public Decimal JUMLAH_A4 { get; set; }
-        public Decimal JUMLAH_A5 { get; set; }
+        public string MATERIAL { get; set; }
         public Decimal JUMLAH_QTY { get; set; }
         public string PENJELASAN { get; set; }
     } 

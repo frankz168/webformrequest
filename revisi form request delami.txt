@@ -1,0 +1,15 @@
+1. Tanggal Required Tidak blh lebih besar dari tnggal hari ini. (Ok)
+2. Budget harus diisi mandatory. (Ok)
+3. material dibuat mandatory. (Ok)
+4. Dashboard dan report ditambah kolom brand. (Ok)
+5. Jenis Counter/Store atau bazzar . harus diisi listnya minimal 1. (Ok)
+6. Tanggal Desain Harus mandatory oleh sih pak yana. Tanggal gak blh sebelum hari ini. (Ok)
+7. Revise ketika command tidak diisi. layar tidak bisa refresh.
+
+
+Form Ads Iklan
+1. Brand Mandatory. (Ok)
+2. Periode From to mandatory. (Ok)
+3. Jenis Iklan. (Ok)
+4. point 1 sampe 4.
+

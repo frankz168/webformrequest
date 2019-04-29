@@ -22,6 +22,15 @@ namespace WebDelamiFormRequest {
         protected global::System.Web.UI.WebControls.Panel PanelMain;
         
         /// <summary>
+        /// HM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebDelamiFormRequest.HeaderMenu HM;
+        
+        /// <summary>
         /// DivMessage control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,249 @@ namespace WebDelamiFormRequest {
         protected global::System.Web.UI.WebControls.Button btn_ReportStatus;
         
         /// <summary>
+        /// btn_ReportGraphicDesign control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_ReportGraphicDesign;
+        
+        /// <summary>
+        /// btn_ReportDigitalAds control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_ReportDigitalAds;
+        
+        /// <summary>
+        /// btn_ReportUserAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_ReportUserAll;
+        
+        /// <summary>
+        /// gvMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView.ASPxGridView gvMain;
+        
+        /// <summary>
+        /// C_GridDashUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashUser;
+        
+        /// <summary>
+        /// C_GridDashHeadDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashHeadDepartment;
+        
+        /// <summary>
+        /// C_GridDashBrandManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashBrandManager;
+        
+        /// <summary>
+        /// C_GridDashHeadVM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashHeadVM;
+        
+        /// <summary>
+        /// C_GridDashPhotographer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashPhotographer;
+        
+        /// <summary>
+        /// C_GridDashDI control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashDI;
+        
+        /// <summary>
+        /// C_GridDashPDC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashPDC;
+        
+        /// <summary>
+        /// C_GridDashHeadDesigner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashHeadDesigner;
+        
+        /// <summary>
+        /// C_GridDashGraphicDesigner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashGraphicDesigner;
+        
+        /// <summary>
+        /// C_GridDashCreativeManagerMarkom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashCreativeManagerMarkom;
+        
+        /// <summary>
+        /// C_GridDashCreativeManagerOthers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashCreativeManagerOthers;
+        
+        /// <summary>
+        /// C_GridDashUserIklan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashUserIklan;
+        
+        /// <summary>
+        /// C_GridDashHeadDepartmentIklan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashHeadDepartmentIklan;
+        
+        /// <summary>
+        /// C_GridDashDigitalMarketingIklan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashDigitalMarketingIklan;
+        
+        /// <summary>
+        /// C_GridDashUserRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashUserRepair;
+        
+        /// <summary>
+        /// C_GridDashHeadDepartmentRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashHeadDepartmentRepair;
+        
+        /// <summary>
+        /// C_GridDashStoreDesignRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashStoreDesignRepair;
+        
+        /// <summary>
+        /// C_GridDashProjectRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashProjectRepair;
+        
+        /// <summary>
+        /// C_GridDashProjectRepairPIC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashProjectRepairPIC;
+        
+        /// <summary>
+        /// C_GridDashBrandManagerRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashBrandManagerRepair;
+        
+        /// <summary>
+        /// C_GridDashComercialDirectorRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashComercialDirectorRepair;
+        
+        /// <summary>
+        /// C_GridDashBudgetControlRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashBudgetControlRepair;
+        
+        /// <summary>
+        /// C_GridDashCreativeManagerRepair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashCreativeManagerRepair;
+        
+        /// <summary>
         /// HfUsername control.
         /// </summary>
         /// <remarks>
@@ -74,5 +326,41 @@ namespace WebDelamiFormRequest {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HfKDBRAND;
+        
+        /// <summary>
+        /// HfKODE_FORM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfKODE_FORM;
+        
+        /// <summary>
+        /// HfNO_FORM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfNO_FORM;
+        
+        /// <summary>
+        /// HfPagesName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfPagesName;
+        
+        /// <summary>
+        /// HfUserProfileId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfUserProfileId;
     }
 }

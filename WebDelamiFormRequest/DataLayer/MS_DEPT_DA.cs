@@ -75,19 +75,20 @@ namespace WebDelamiFormRequest.DataLayer
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
-                    command.Parameters.Add("@ID", SqlDbType.Int).Value = msdept.ID;
+                    //command.Parameters.Add("@ID", SqlDbType.VarChar).Value = msdept.ID;
                     command.Parameters.Add("@KODE_DEPT", SqlDbType.VarChar).Value = msdept.KODE_DEPT;
                     command.Parameters.Add("@DEPT", SqlDbType.VarChar).Value = msdept.DEPT;
                     command.Parameters.Add("@KET", SqlDbType.VarChar).Value = msdept.KET;
                     command.Parameters.Add("@CREATED_BY", SqlDbType.VarChar).Value = msdept.CREATED_BY;
                     command.Parameters.Add("@CREATED_DATE", SqlDbType.DateTime).Value = msdept.CREATED_DATE;
-                    command.Parameters.Add("@STATUS", SqlDbType.Bit).Value = msdept.STATUS;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = msdept.STATUS;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -106,19 +107,20 @@ namespace WebDelamiFormRequest.DataLayer
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
-                    command.Parameters.Add("@ID", SqlDbType.Int).Value = msdept.ID;
+                    command.Parameters.Add("@ID", SqlDbType.VarChar).Value = msdept.ID;
                     command.Parameters.Add("@KODE_DEPT", SqlDbType.VarChar).Value = msdept.KODE_DEPT;
                     command.Parameters.Add("@DEPT", SqlDbType.VarChar).Value = msdept.DEPT;
                     command.Parameters.Add("@KET", SqlDbType.VarChar).Value = msdept.KET;
                     command.Parameters.Add("@CREATED_BY", SqlDbType.VarChar).Value = msdept.CREATED_BY;
                     command.Parameters.Add("@CREATED_DATE", SqlDbType.DateTime).Value = msdept.CREATED_DATE;
-                    command.Parameters.Add("@STATUS", SqlDbType.Bit).Value = msdept.STATUS;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = msdept.STATUS;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -147,6 +149,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -173,6 +176,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {

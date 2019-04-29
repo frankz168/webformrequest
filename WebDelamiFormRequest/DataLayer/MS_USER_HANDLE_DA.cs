@@ -20,7 +20,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID, KODE_FORM, KD_JABATAN, URUTAN FROM MS_USER_HANDLE"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID, KODE_FORM, KD_JABATAN, URUTAN, ACTION, PAGE_NAME, SP FROM MS_USER_HANDLE"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 CnString.Open();
@@ -36,7 +36,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID, KODE_FORM, KD_JABATAN, URUTAN FROM MS_USER_HANDLE WHERE ID = @ID"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID, KODE_FORM, KD_JABATAN, URUTAN, ACTION, PAGE_NAME, SP FROM MS_USER_HANDLE WHERE ID = @ID"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.Add("@ID", ID);
@@ -53,7 +53,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID, KODE_FORM, KD_JABATAN, URUTAN FROM MS_USER_HANDLE WHERE {0} ", Where), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID, KODE_FORM, KD_JABATAN, URUTAN, ACTION, PAGE_NAME, SP FROM MS_USER_HANDLE WHERE {0} ", Where), CnString))
             {
                 CnString.Open();
 
@@ -70,7 +70,7 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("INSERT INTO MS_USER_HANDLE(KODE_FORM, KD_JABATAN, URUTAN) VALUES (@KODE_FORM, @KD_JABATAN, @URUTAN)");
+                string query = String.Format("INSERT INTO MS_USER_HANDLE(KODE_FORM, KD_JABATAN, URUTAN, ACTION, PAGE_NAME, SP) VALUES (@KODE_FORM, @KD_JABATAN, @URUTAN, @ACTION, @PAGE_NAME, @SP)");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -79,12 +79,16 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = msuserhandle.KODE_FORM;
                     command.Parameters.Add("@KD_JABATAN", SqlDbType.VarChar).Value = msuserhandle.KD_JABATAN;
                     command.Parameters.Add("@URUTAN", SqlDbType.Int).Value = msuserhandle.URUTAN;
+                    command.Parameters.Add("@ACTION", SqlDbType.VarChar).Value = msuserhandle.ACTION;
+                    command.Parameters.Add("@PAGE_NAME", SqlDbType.VarChar).Value = msuserhandle.PAGE_NAME;
+                    command.Parameters.Add("@SP", SqlDbType.VarChar).Value = msuserhandle.SP;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -98,7 +102,7 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("UPDATE MS_USER_HANDLE SET KODE_FORM = @KODE_FORM, KD_JABATAN = @KD_JABATAN, URUTAN = @URUTAN WHERE ID = @ID ");
+                string query = String.Format("UPDATE MS_USER_HANDLE SET KODE_FORM = @KODE_FORM, KD_JABATAN = @KD_JABATAN, URUTAN = @URUTAN, ACTION = @ACTION, PAGE_NAME = @PAGE_NAME, SP = @SP WHERE ID = @ID ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -107,12 +111,16 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = msuserhandle.KODE_FORM;
                     command.Parameters.Add("@KD_JABATAN", SqlDbType.VarChar).Value = msuserhandle.KD_JABATAN;
                     command.Parameters.Add("@URUTAN", SqlDbType.Int).Value = msuserhandle.URUTAN;
+                    command.Parameters.Add("@ACTION", SqlDbType.VarChar).Value = msuserhandle.ACTION;
+                    command.Parameters.Add("@PAGE_NAME", SqlDbType.VarChar).Value = msuserhandle.PAGE_NAME;
+                    command.Parameters.Add("@SP", SqlDbType.VarChar).Value = msuserhandle.SP;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -141,6 +149,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -167,6 +176,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {

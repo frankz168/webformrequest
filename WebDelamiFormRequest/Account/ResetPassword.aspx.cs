@@ -110,7 +110,7 @@ namespace WebDelamiFormRequest.Account
                 if (Ds.Tables[0].Rows.Count > 0)
                 {
                     Int64 ID = Convert.ToInt64(Ds.Tables[0].Rows[0]["ID"].ToString());
-                    Int16 ID_DEPT = Convert.ToInt16(Ds.Tables[0].Rows[0]["ID_DEPT"].ToString());
+                    string ID_DEPT = Convert.ToString(Ds.Tables[0].Rows[0]["ID_DEPT"].ToString());
                     //Int16 ID_HANDLE = Convert.ToInt16(Ds.Tables[0].Rows[0]["ID_HANDLE"].ToString());
                     string USERNAME = Convert.ToString(Ds.Tables[0].Rows[0]["USERNAME"].ToString());
                     string PASSWORD = Convert.ToString(Ds.Tables[0].Rows[0]["PASSWORD"].ToString());

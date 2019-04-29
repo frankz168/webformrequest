@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +44,25 @@
     <Reference Include="AjaxControlToolkit, Version=4.1.50508.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Project Mayapada Tower\Project Waroq (31-07-2018 Office)\WAROQ-SYSTEM\WAROQ-SYSTEM\bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v14.1.Core, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v14.1, Version=14.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GemBox.Spreadsheet, Version=37.3.30.1128, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\GemBox.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -330,13 +351,39 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Forms_Data\I_FormRequestGDR.aspx" />
-    <Content Include="Forms_Data\I_FormRequestVM.aspx" />
-    <Content Include="Forms_Data\L_FormRequestGDR.aspx" />
-    <Content Include="Forms_Data\L_FormRequestVM.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Forms_Data_Master\Master_Brand.aspx" />
+    <Content Include="Forms_Data_Master\Master_Departemen.aspx" />
+    <Content Include="Forms_Data_Master\Master_Form.aspx" />
+    <Content Include="Forms_Data_Master\Master_Jabatan.aspx" />
+    <Content Include="Forms_Data_Process\I_FormRequestGDR_Iklan.aspx" />
+    <Content Include="Forms_Data_Process\I_FormRequestGDR_Markom.aspx" />
+    <Content Include="Forms_Data_Process\I_FormRequestGDR_Others.aspx" />
+    <Content Include="Forms_Data_Process\I_FormRequestGDR_VM.aspx" />
+    <Content Include="Forms_Data_Process\I_FormRequest_Repair.aspx" />
+    <Content Include="Forms_Data_Process\I_FormRequest_Repair_SD.aspx" />
+    <Content Include="Forms_Data_Process\L_FormRequestGDR_Iklan.aspx" />
+    <Content Include="Forms_Data_Process\L_FormRequestGDR_Markom.aspx" />
+    <Content Include="Forms_Data_Process\L_FormRequestGDR_Others.aspx" />
+    <Content Include="Forms_Data_Process\L_FormRequestGDR_VM.aspx" />
+    <Content Include="Forms_Data_Master\Default_Master.aspx" />
+    <Content Include="Forms_Data_Process\L_FormRequest_Repair.aspx" />
+    <Content Include="Forms_Data_Reports\ReportDigitalAdsForm.aspx" />
+    <Content Include="Forms_Data_Reports\ReportFormAllFormDesign.aspx" />
+    <Content Include="Forms_Data_Reports\ReportFormDigitalMarketing.aspx" />
+    <Content Include="Forms_Data_Reports\ReportFormGdrMarkom.aspx" />
+    <Content Include="Forms_Data_Reports\ReportFormGdrOthers.aspx" />
+    <Content Include="Forms_Data_Reports\ReportFormGdrVM.aspx" />
+    <Content Include="Forms_Data_Reports\ReportFormRepair.aspx" />
+    <Content Include="Forms_Data_Security\Default_Admin.aspx" />
+    <Content Include="Forms_Data_Security\Security_Functions.aspx" />
+    <Content Include="Forms_Data_Security\Security_User.aspx" />
+    <Content Include="Forms_Data_Security\Security_User_Profile.aspx" />
+    <Content Include="Forms_Data_Security\Security_User_Profile_To_Functions.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\ketentuanVM.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
@@ -349,6 +396,8 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="MainMenu.aspx" />
+    <Content Include="Menu_Forms_Detail\FormRequestDigitalAds.aspx" />
+    <Content Include="Menu_Forms_Detail\FormRequestRepair.aspx" />
     <Content Include="packages.config" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.eot" />
     <Content Include="assets\fonts\Pe-icon-7-stroke.ttf" />
@@ -432,8 +481,13 @@
     <Content Include="Account\lib\fullcalendar-1.6.4\demos\json-events.php" />
     <Content Include="Account\lib\jQuery-Knob\knob.jquery.json" />
     <Content Include="Account\lib\jQuery-Knob\README.md" />
+    <None Include="Properties\PublishProfiles\WebDelamiFormRequest.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Reports\ReportStatusForm.aspx" />
+    <Content Include="Forms_Data_Reports\ReportActivityForm.aspx" />
+    <Content Include="Forms_Data_Reports\ReportAllForm.aspx" />
+    <Content Include="Forms_Data_Reports\ReportAllDigitalAdsForm.aspx" />
+    <Content Include="Forms_Data_Reports\ReportGraphicDesignForm.aspx" />
+    <Content Include="Forms_Data_Reports\ReportStatusForm.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
@@ -461,9 +515,11 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Default.aspx" />
+    <Content Include="Menu_Forms_Detail\FormRequestGraphicDesign.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="UserControl\HeaderMenu.ascx" />
+    <Content Include="TemplateResult\FlowChart-VM-20190111_115323.htm" />
     <Content Include="test.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -510,7 +566,20 @@
     </Compile>
     <Compile Include="DataLayer\BRAND_DA.cs" />
     <Compile Include="DataLayer\Common\ExecutionResult.cs" />
+    <Compile Include="DataLayer\MS_FUNCTIONS_DA.cs" />
+    <Compile Include="DataLayer\MS_USER_PROFILE_DA.cs" />
+    <Compile Include="DataLayer\MS_USER_PROFILE_TO_FUNCTIONS_DA .cs" />
+    <Compile Include="DataLayer\TR_FORM1_GDR_KATEGORI_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM2_GDR_KATEGORI_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM3_GDR_KATEGORI_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM4_GDR_BRAND_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM5_REPAIR_DA .cs" />
+    <Compile Include="DataLayer\TR_FORM5_REPAIR_PERMINTAAN_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM5_REPAIR_STORE_DESIGN_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM5_REPAIR_STORE_DESIGN_DETAIL_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM_GDR_CUST_TEMP_DA.cs" />
     <Compile Include="DataLayer\LOGIN_DA.cs" />
+    <Compile Include="DataLayer\MS_CUST_CT_DA.cs" />
     <Compile Include="DataLayer\MS_DEPT_DA.cs" />
     <Compile Include="DataLayer\MS_FORM_DA.cs" />
     <Compile Include="DataLayer\MS_JABATAN_DA.cs" />
@@ -519,6 +588,16 @@
     <Compile Include="DataLayer\TR_FORM1_GDR_BUDGET_DA.cs" />
     <Compile Include="DataLayer\TR_FORM1_GDR_DA.cs" />
     <Compile Include="DataLayer\TR_FORM1_GDR_MATERI_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM3_GDR_BUDGET_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM3_GDR_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM3_GDR_MATERI_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM4_GDR_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM4_GDR_IKLAN_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM_GDR_ACTIVITY_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM2_GDR_BUDGET_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM2_GDR_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM2_GDR_MATERI_DA.cs" />
+    <Compile Include="DataLayer\TR_FORM_GDR_CUST_DA.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -526,45 +605,250 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Domain\MS_FUNCTIONS.cs" />
+    <Compile Include="Domain\MS_USER_PROFILE.cs" />
+    <Compile Include="Domain\MS_USER_PROFILE_TO_FUNCTIONS.cs" />
+    <Compile Include="Domain\TR_FORM5_REPAIR.cs" />
+    <Compile Include="Domain\TR_FORM4_GDR_BRAND.cs" />
+    <Compile Include="Domain\TR_FORM5_REPAIR_PERMINTAAN .cs" />
+    <Compile Include="Domain\TR_FORM5_REPAIR_STORE_DESIGN.cs" />
+    <Compile Include="Domain\TR_FORM5_REPAIR_STORE_DESIGN_DETAIL.cs" />
+    <Compile Include="Forms_Data_Master\Master_Brand.aspx.cs">
+      <DependentUpon>Master_Brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Brand.aspx.designer.cs">
+      <DependentUpon>Master_Brand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Departemen.aspx.cs">
+      <DependentUpon>Master_Departemen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Departemen.aspx.designer.cs">
+      <DependentUpon>Master_Departemen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Form.aspx.cs">
+      <DependentUpon>Master_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Form.aspx.designer.cs">
+      <DependentUpon>Master_Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Jabatan.aspx.cs">
+      <DependentUpon>Master_Jabatan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Master_Jabatan.aspx.designer.cs">
+      <DependentUpon>Master_Jabatan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\I_FormRequest_Repair.aspx.cs">
+      <DependentUpon>I_FormRequest_Repair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\I_FormRequest_Repair.aspx.designer.cs">
+      <DependentUpon>I_FormRequest_Repair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\I_FormRequest_Repair_SD.aspx.cs">
+      <DependentUpon>I_FormRequest_Repair_SD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\I_FormRequest_Repair_SD.aspx.designer.cs">
+      <DependentUpon>I_FormRequest_Repair_SD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequest_Repair.aspx.cs">
+      <DependentUpon>L_FormRequest_Repair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequest_Repair.aspx.designer.cs">
+      <DependentUpon>L_FormRequest_Repair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportDigitalAdsForm.aspx.cs">
+      <DependentUpon>ReportDigitalAdsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportDigitalAdsForm.aspx.designer.cs">
+      <DependentUpon>ReportDigitalAdsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormAllFormDesign.aspx.cs">
+      <DependentUpon>ReportFormAllFormDesign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormAllFormDesign.aspx.designer.cs">
+      <DependentUpon>ReportFormAllFormDesign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormDigitalMarketing.aspx.cs">
+      <DependentUpon>ReportFormDigitalMarketing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormDigitalMarketing.aspx.designer.cs">
+      <DependentUpon>ReportFormDigitalMarketing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormGdrMarkom.aspx.cs">
+      <DependentUpon>ReportFormGdrMarkom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormGdrMarkom.aspx.designer.cs">
+      <DependentUpon>ReportFormGdrMarkom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormGdrOthers.aspx.cs">
+      <DependentUpon>ReportFormGdrOthers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormGdrOthers.aspx.designer.cs">
+      <DependentUpon>ReportFormGdrOthers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormGdrVM.aspx.cs">
+      <DependentUpon>ReportFormGdrVM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormGdrVM.aspx.designer.cs">
+      <DependentUpon>ReportFormGdrVM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormRepair.aspx.cs">
+      <DependentUpon>ReportFormRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportFormRepair.aspx.designer.cs">
+      <DependentUpon>ReportFormRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_Functions.aspx.cs">
+      <DependentUpon>Security_Functions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_Functions.aspx.designer.cs">
+      <DependentUpon>Security_Functions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_User.aspx.cs">
+      <DependentUpon>Security_User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_User.aspx.designer.cs">
+      <DependentUpon>Security_User.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_User_Profile.aspx.cs">
+      <DependentUpon>Security_User_Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_User_Profile.aspx.designer.cs">
+      <DependentUpon>Security_User_Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_User_Profile_To_Functions.aspx.cs">
+      <DependentUpon>Security_User_Profile_To_Functions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Security_User_Profile_To_Functions.aspx.designer.cs">
+      <DependentUpon>Security_User_Profile_To_Functions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Forms_Detail\FormRequestDigitalAds.aspx.cs">
+      <DependentUpon>FormRequestDigitalAds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu_Forms_Detail\FormRequestDigitalAds.aspx.designer.cs">
+      <DependentUpon>FormRequestDigitalAds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Forms_Detail\FormRequestGraphicDesign.aspx.cs">
+      <DependentUpon>FormRequestGraphicDesign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu_Forms_Detail\FormRequestGraphicDesign.aspx.designer.cs">
+      <DependentUpon>FormRequestGraphicDesign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\TR_FORM3_GDR_KATEGORI.cs" />
+    <Compile Include="Domain\TR_FORM2_GDR_KATEGORI.cs" />
+    <Compile Include="Domain\TR_FORM1_GDR_KATEGORI.cs" />
+    <Compile Include="Domain\TR_FORM_GDR_CUST_TEMP.cs" />
     <Compile Include="Domain\MS_BRAND.cs" />
+    <Compile Include="Domain\MS_CUST_CT .cs" />
     <Compile Include="Domain\MS_DEPT.cs" />
     <Compile Include="Domain\MS_FORM.cs" />
     <Compile Include="Domain\MS_JABATAN.cs" />
     <Compile Include="Domain\MS_USER.cs" />
     <Compile Include="Domain\MS_USER_HANDLE.cs" />
     <Compile Include="Domain\TR_FORM1_GDR.cs" />
+    <Compile Include="Domain\TR_FORM3_GDR.cs" />
+    <Compile Include="Domain\TR_FORM2_GDR.cs" />
     <Compile Include="Domain\TR_FORM1_GDR_BUDGET.cs" />
     <Compile Include="Domain\TR_FORM1_GDR_MATERI.cs" />
+    <Compile Include="Domain\TR_FORM3_GDR_BUDGET.cs" />
+    <Compile Include="Domain\TR_FORM3_GDR_MATERI.cs" />
+    <Compile Include="Domain\TR_FORM4_GDR.cs" />
+    <Compile Include="Domain\TR_FORM4_GDR_IKLAN.cs" />
+    <Compile Include="Domain\TR_FORM_GDR_ACTIVITY.cs" />
+    <Compile Include="Domain\TR_FORM2_GDR_BUDGET.cs" />
+    <Compile Include="Domain\TR_FORM2_GDR_MATERI.cs" />
+    <Compile Include="Domain\TR_FORM_GDR_CUST.cs" />
     <Compile Include="Enums\EApprovalStatus.cs" />
     <Compile Include="Enums\EPermission.cs" />
     <Compile Include="Enums\EYesNo.cs" />
-    <Compile Include="Forms_Data\I_FormRequestGDR.aspx.cs">
-      <DependentUpon>I_FormRequestGDR.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_Iklan.aspx.cs">
+      <DependentUpon>I_FormRequestGDR_Iklan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms_Data\I_FormRequestGDR.aspx.designer.cs">
-      <DependentUpon>I_FormRequestGDR.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_Iklan.aspx.designer.cs">
+      <DependentUpon>I_FormRequestGDR_Iklan.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms_Data\I_FormRequestVM.aspx.cs">
-      <DependentUpon>I_FormRequestVM.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_Markom.aspx.cs">
+      <DependentUpon>I_FormRequestGDR_Markom.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms_Data\I_FormRequestVM.aspx.designer.cs">
-      <DependentUpon>I_FormRequestVM.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_Markom.aspx.designer.cs">
+      <DependentUpon>I_FormRequestGDR_Markom.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms_Data\L_FormRequestGDR.aspx.cs">
-      <DependentUpon>L_FormRequestGDR.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_Others.aspx.cs">
+      <DependentUpon>I_FormRequestGDR_Others.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms_Data\L_FormRequestGDR.aspx.designer.cs">
-      <DependentUpon>L_FormRequestGDR.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_Others.aspx.designer.cs">
+      <DependentUpon>I_FormRequestGDR_Others.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms_Data\L_FormRequestVM.aspx.cs">
-      <DependentUpon>L_FormRequestVM.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_VM.aspx.cs">
+      <DependentUpon>I_FormRequestGDR_VM.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms_Data\L_FormRequestVM.aspx.designer.cs">
-      <DependentUpon>L_FormRequestVM.aspx</DependentUpon>
+    <Compile Include="Forms_Data_Process\I_FormRequestGDR_VM.aspx.designer.cs">
+      <DependentUpon>I_FormRequestGDR_VM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_Iklan.aspx.cs">
+      <DependentUpon>L_FormRequestGDR_Iklan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_Iklan.aspx.designer.cs">
+      <DependentUpon>L_FormRequestGDR_Iklan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_Markom.aspx.cs">
+      <DependentUpon>L_FormRequestGDR_Markom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_Markom.aspx.designer.cs">
+      <DependentUpon>L_FormRequestGDR_Markom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_Others.aspx.cs">
+      <DependentUpon>L_FormRequestGDR_Others.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_Others.aspx.designer.cs">
+      <DependentUpon>L_FormRequestGDR_Others.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_VM.aspx.cs">
+      <DependentUpon>L_FormRequestGDR_VM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Process\L_FormRequestGDR_VM.aspx.designer.cs">
+      <DependentUpon>L_FormRequestGDR_VM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Default_Master.aspx.cs">
+      <DependentUpon>Default_Master.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Master\Default_Master.aspx.designer.cs">
+      <DependentUpon>Default_Master.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Default_Admin.aspx.cs">
+      <DependentUpon>Default_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Security\Default_Admin.aspx.designer.cs">
+      <DependentUpon>Default_Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -576,12 +860,47 @@
     <Compile Include="MainMenu.aspx.designer.cs">
       <DependentUpon>MainMenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Menu_Forms_Detail\FormRequestRepair.aspx.cs">
+      <DependentUpon>FormRequestRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu_Forms_Detail\FormRequestRepair.aspx.designer.cs">
+      <DependentUpon>FormRequestRepair.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\ReportStatusForm.aspx.cs">
+    <Compile Include="Forms_Data_Reports\ReportActivityForm.aspx.cs">
+      <DependentUpon>ReportActivityForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportActivityForm.aspx.designer.cs">
+      <DependentUpon>ReportActivityForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportAllForm.aspx.cs">
+      <DependentUpon>ReportAllForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportAllForm.aspx.designer.cs">
+      <DependentUpon>ReportAllForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportAllDigitalAdsForm.aspx.cs">
+      <DependentUpon>ReportAllDigitalAdsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportAllDigitalAdsForm.aspx.designer.cs">
+      <DependentUpon>ReportAllDigitalAdsForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportGraphicDesignForm.aspx.cs">
+      <DependentUpon>ReportGraphicDesignForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportGraphicDesignForm.aspx.designer.cs">
+      <DependentUpon>ReportGraphicDesignForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportStatusForm.aspx.cs">
       <DependentUpon>ReportStatusForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\ReportStatusForm.aspx.designer.cs">
+    <Compile Include="Forms_Data_Reports\ReportStatusForm.aspx.designer.cs">
       <DependentUpon>ReportStatusForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
@@ -592,7 +911,15 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Static\Common.cs" />
+    <Compile Include="Static\EmailSetting.cs" />
     <Compile Include="Static\MailHelper.cs" />
+    <Compile Include="UserControl\HeaderMenu.ascx.cs">
+      <DependentUpon>HeaderMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\HeaderMenu.ascx.designer.cs">
+      <DependentUpon>HeaderMenu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -603,11 +930,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
+    <Folder Include="FileUpload\" />
+    <Folder Include="Template\" />
+    <Folder Include="Uploaded\FileUploadAds\" />
+    <Folder Include="Uploaded\FileUploadDI\" />
+    <Folder Include="Uploaded\FileUploadGD\" />
+    <Folder Include="Uploaded\FileUploadPG\" />
+    <Folder Include="Uploaded\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TemplateResult\FlowChart-20190111_112339.xlsx" />
+    <Content Include="TemplateResult\FlowChart-20190111_112424.xlsx" />
+    <Content Include="TemplateResult\FlowChart-20190111_112527.xlsx" />
+    <Content Include="TemplateResult\FlowChart-20190111_112547.xlsx" />
+    <Content Include="TemplateResult\FlowChart-20190111_112615.xlsx" />
+    <Content Include="TemplateResult\FlowChart-20190111_112641.xlsx" />
+    <Content Include="TemplateResult\FlowChart-VM-20190111_114806.xlsx" />
+    <Content Include="TemplateResult\FlowChart-VM-20190111_114852.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -615,9 +958,51 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -628,7 +1013,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>12025</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:2961/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

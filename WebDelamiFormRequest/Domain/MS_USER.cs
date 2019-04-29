@@ -8,7 +8,7 @@ namespace WebDelamiFormRequest.Domain
     public class MS_USER
     {
         public Int64 ID { get; set; }
-        public int ID_DEPT { get; set; }
+        public string ID_DEPT { get; set; }
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
         public string DEPT { get; set; }
@@ -20,6 +20,8 @@ namespace WebDelamiFormRequest.Domain
         public string FORGOT_PASSWORD_TOKEN { get; set; }
         public DateTime? LAST_PASSWORD_CHANGE { get; set; }
         public string KD_BRAND { get; set; }
-        public string KD_JABATAN { get; set; } 
+        public string KD_JABATAN { get; set; }
+        public string FULL_NAME { get; set; }
+        public string UserProfileId { get; set; }
     } 
 }

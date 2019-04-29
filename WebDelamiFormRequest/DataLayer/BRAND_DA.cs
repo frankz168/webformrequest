@@ -83,6 +83,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -109,6 +110,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -137,6 +139,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -163,6 +166,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {

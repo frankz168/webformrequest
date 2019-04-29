@@ -11,5 +11,9 @@ namespace WebDelamiFormRequest.Domain
         public string KODE_FORM { get; set; }
         public string KD_JABATAN { get; set; }
         public int URUTAN { get; set; }
+        public string ACTION { get; set; }
+        public string PAGE_NAME { get; set; }
+        public string SP { get; set; }
+
     } 
 }

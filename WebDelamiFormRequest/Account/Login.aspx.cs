@@ -62,7 +62,18 @@ namespace WebDelamiFormRequest.Account
 
                 string usertest = user.USERNAME;
                 insertSession(user);
-                Response.Redirect("~/MainMenu.aspx");
+
+                string ID_DEPT = user.ID_DEPT;
+                string KD_JABATAN = user.KD_JABATAN;
+
+                if (user.ID_DEPT == "34")
+                {
+                    Response.Redirect("~/MainMenu.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/MainMenu.aspx");
+                }
             }
             else
             {
@@ -76,11 +87,13 @@ namespace WebDelamiFormRequest.Account
         protected void insertSession(MS_USER user)
         {
             Session["Username"] = user.USERNAME;
+            Session["USERFULLNAME"] = user.FULL_NAME;
             Session["Password"] = user.PASSWORD;
             Session["Dept"] = user.DEPT;
             Session["KD_JABATAN"] = user.KD_JABATAN;
             Session["KD_BRAND"] = user.KD_BRAND;
             Session["ID_DEPT"] = user.ID_DEPT;
+            Session["UserProfileId"] = user.UserProfileId;
         }
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)

@@ -1,0 +1,10 @@
+select TABLE_NAME, DATA_TYPE 
+from information_schema.columns
+where table_name = 'DISCH_'
+
+
+SELECT TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG='dbName'
+
+SELECT name FROM sysobjects WHERE (xtype = 'U') AND ([name]<>'dtproperties') ORDER BY [name]

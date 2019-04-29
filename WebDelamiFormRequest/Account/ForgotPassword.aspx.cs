@@ -60,17 +60,18 @@ namespace WebDelamiFormRequest.Account
                 if (Ds.Tables[0].Rows.Count > 0)
                 {
                     Int64 ID = Convert.ToInt64(Ds.Tables[0].Rows[0]["ID"].ToString());
-                    Int16 ID_DEPT = Convert.ToInt16(Ds.Tables[0].Rows[0]["ID_DEPT"].ToString());
+                    string ID_DEPT = Convert.ToString(Ds.Tables[0].Rows[0]["ID_DEPT"].ToString());
                     //Int16 ID_HANDLE = Convert.ToInt16(Ds.Tables[0].Rows[0]["ID_HANDLE"].ToString());
                     string USERNAME = Convert.ToString(Ds.Tables[0].Rows[0]["USERNAME"].ToString());
                     string PASSWORD = Convert.ToString(Ds.Tables[0].Rows[0]["PASSWORD"].ToString());
                     string DEPT = Convert.ToString(Ds.Tables[0].Rows[0]["DEPT"].ToString());
                     Email = Ds.Tables[0].Rows[0]["EMAIL"].ToString();
                     string CREATED_BY = Convert.ToString(Ds.Tables[0].Rows[0]["CREATED_BY"].ToString());
-                    DateTime CREATED_DATE = Convert.ToDateTime(Ds.Tables[0].Rows[0]["CREATED_DATE"].ToString());
+                    //DateTime CREATED_DATE = Convert.ToDateTime(Ds.Tables[0].Rows[0]["CREATED_DATE"].ToString());
                     bool STATUS = Convert.ToBoolean(Ds.Tables[0].Rows[0]["Status"].ToString());
                     string KD_BRAND = Convert.ToString(Ds.Tables[0].Rows[0]["KD_BRAND"].ToString());
                     string KD_JABATAN = Convert.ToString(Ds.Tables[0].Rows[0]["KD_JABATAN"].ToString());
+                    string FULL_NAME = Convert.ToString(Ds.Tables[0].Rows[0]["FULL_NAME"].ToString());
 
 
                     MS_USER msuser = new MS_USER();
@@ -81,13 +82,14 @@ namespace WebDelamiFormRequest.Account
                     msuser.DEPT = DEPT;
                     msuser.EMAIL = Email;
                     msuser.CREATED_BY = CREATED_BY;
-                    msuser.CREATED_DATE = CREATED_DATE;
+                    msuser.CREATED_DATE = Convert.ToDateTime("2019-01-01");
                     msuser.STATUS = STATUS;
                     msuser.FORGOT_PASSWORD = "Yes";
                     msuser.FORGOT_PASSWORD_TOKEN = ForgotPasswordToken;
                     msuser.LAST_PASSWORD_CHANGE = startdate;
                     msuser.KD_BRAND = KD_BRAND;
                     msuser.KD_JABATAN = KD_JABATAN;
+                    msuser.FULL_NAME = FULL_NAME;
                     MsUserDA.Update(msuser);
 
                     Url = string.Format(PasswordResetPath, ("Account/ResetPassword.aspx?st="

@@ -1,0 +1,30 @@
+DECLARE @rNM_LOGIN_OP Varchar(50) = 'm-wehan';
+SELECT * 
+FROM Vw_close_URL As closeurl
+ LEFT OUTER JOIN
+dbo.MS_CUST_CT AS m ON m.kode_cust = closeurl.kode_cust AND m.kode_ct = closeurl.kode_ct
+WHERE
+((upper(LEFT(@rNM_LOGIN_OP,2)) ='T-' and m.nm_login_op = @rNM_LOGIN_OP)  or
+( upper(LEFT(@rNM_LOGIN_OP,2)) ='M-' and m.nm_login_rm = @rNM_LOGIN_OP)  or
+( upper(LEFT(@rNM_LOGIN_OP,2)) ='S-' and m.nm_login_rs = @rNM_LOGIN_OP)  or
+( upper(LEFT(@rNM_LOGIN_OP,2)) ='R-' and m.nm_login_rs = @rNM_LOGIN_OP)  or
+upper(@rNM_LOGIN_OP)='ALL' or  LEN(TRIM(@rNM_LOGIN_OP))=0 or @rNM_LOGIN_OP=NULL )
+
+
+DECLARE @rNM_LOGIN_OP Varchar(50) = 'R-RUDY';
+Select *
+from
+Vw_log_in_R As loginr
+LEFT OUTER JOIN
+dbo.MS_CUST_CT AS m ON m.kode_cust = loginr.kode_cust
+WHERE
+((upper(LEFT(@rNM_LOGIN_OP,2)) ='T-' and m.nm_login_op = @rNM_LOGIN_OP)  or
+( upper(LEFT(@rNM_LOGIN_OP,2)) ='M-' and m.nm_login_rm = @rNM_LOGIN_OP)  or
+( upper(LEFT(@rNM_LOGIN_OP,2)) ='S-' and m.nm_login_rs = @rNM_LOGIN_OP)  or
+( upper(LEFT(@rNM_LOGIN_OP,2)) ='R-' and m.nm_login_rs = @rNM_LOGIN_OP)  or
+upper(@rNM_LOGIN_OP)='ALL' or  LEN(TRIM(@rNM_LOGIN_OP))=0 or @rNM_LOGIN_OP=NULL )
+
+SELECT * FROM MS_CUST_CT
+WHERE nm_login_rs LIKE '%R-%'
+
+

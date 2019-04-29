@@ -20,7 +20,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID_BUDGET, NO_FORM, KODE_BUDGET, DETAIL, ISPILIH, PIC FROM TR_FORM1_GDR_BUDGET"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR_BUDGET"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 CnString.Open();
@@ -36,7 +36,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID_BUDGET, NO_FORM, KODE_BUDGET, DETAIL, ISPILIH, PIC FROM TR_FORM1_GDR_BUDGET WHERE ID_BUDGET = @ID_BUDGET"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR_BUDGET WHERE ID_BUDGET = @ID_BUDGET"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.Add("@ID_BUDGET", ID_BUDGET);
@@ -53,7 +53,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID_BUDGET, NO_FORM, KODE_BUDGET, DETAIL, ISPILIH, PIC FROM TR_FORM1_GDR_BUDGET WHERE {0} ", Where), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR_BUDGET WHERE {0} ", Where), CnString))
             {
                 CnString.Open();
 
@@ -70,15 +70,17 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("INSERT INTO TR_FORM1_GDR_BUDGET(ID_BUDGET, NO_FORM, KODE_BUDGET, DETAIL, ISPILIH, PIC) VALUES (@ID_BUDGET, @NO_FORM, @KODE_BUDGET, @DETAIL, @ISPILIH, @PIC)");
+                string query = String.Format("INSERT INTO TR_FORM1_GDR_BUDGET(NO_FORM, KODE_BUDGET, NAMA_BUDGET, DETAIL, KET, ISPILIH, PIC) VALUES (@NO_FORM, @KODE_BUDGET, @NAMA_BUDGET, @DETAIL, @KET, @ISPILIH, @PIC)");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
-                    command.Parameters.Add("@ID_BUDGET", SqlDbType.Int).Value = trform1gdrbudget.ID_BUDGET;
+                    //command.Parameters.Add("@ID_BUDGET", SqlDbType.Int).Value = trform1gdrbudget.ID_BUDGET;
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdrbudget.NO_FORM;
                     command.Parameters.Add("@KODE_BUDGET", SqlDbType.VarChar).Value = trform1gdrbudget.KODE_BUDGET;
+                    command.Parameters.Add("@NAMA_BUDGET", SqlDbType.VarChar).Value = trform1gdrbudget.NAMA_BUDGET;
                     command.Parameters.Add("@DETAIL", SqlDbType.VarChar).Value = trform1gdrbudget.DETAIL;
+                    command.Parameters.Add("@KET", SqlDbType.VarChar).Value = trform1gdrbudget.KET;
                     command.Parameters.Add("@ISPILIH", SqlDbType.VarChar).Value = trform1gdrbudget.ISPILIH;
                     command.Parameters.Add("@PIC", SqlDbType.VarChar).Value = trform1gdrbudget.PIC;
                     command.ExecuteScalar();
@@ -87,6 +89,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -100,7 +103,7 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("UPDATE TR_FORM1_GDR_BUDGET SET NO_FORM = @NO_FORM, KODE_BUDGET = @KODE_BUDGET, DETAIL = @DETAIL, ISPILIH = @ISPILIH, PIC = @PIC WHERE ID_BUDGET = @ID_BUDGET ");
+                string query = String.Format("UPDATE TR_FORM1_GDR_BUDGET SET NO_FORM = @NO_FORM, KODE_BUDGET = @KODE_BUDGET, NAMA_BUDGET = @NAMA_BUDGET, DETAIL = @DETAIL,  KET = @KET, ISPILIH = @ISPILIH, PIC = @PIC WHERE ID_BUDGET = @ID_BUDGET ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -108,7 +111,9 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@ID_BUDGET", SqlDbType.Int).Value = trform1gdrbudget.ID_BUDGET;
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdrbudget.NO_FORM;
                     command.Parameters.Add("@KODE_BUDGET", SqlDbType.VarChar).Value = trform1gdrbudget.KODE_BUDGET;
+                    command.Parameters.Add("@NAMA_BUDGET", SqlDbType.VarChar).Value = trform1gdrbudget.NAMA_BUDGET;
                     command.Parameters.Add("@DETAIL", SqlDbType.VarChar).Value = trform1gdrbudget.DETAIL;
+                    command.Parameters.Add("@KET", SqlDbType.VarChar).Value = trform1gdrbudget.KET;
                     command.Parameters.Add("@ISPILIH", SqlDbType.VarChar).Value = trform1gdrbudget.ISPILIH;
                     command.Parameters.Add("@PIC", SqlDbType.VarChar).Value = trform1gdrbudget.PIC;
                     command.ExecuteScalar();
@@ -117,6 +122,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -145,6 +151,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -171,6 +178,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {

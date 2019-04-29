@@ -1,0 +1,67 @@
+DECLARE @USERNAME Varchar(50) = 'MKT';
+DECLARE @ID_DEPT Varchar(50) = '13';
+DECLARE @KD_BRAND Varchar(50) = 'all';
+
+															
+        gdr.KODE_FORM = 'FRM-0002'
+WITH TblCombine As (
+SELECT gdr.NO_FORM, gdr.KODE_FORM, gdr.KD_BRAND, gdr.DIBUAT, gdr.DITERIMA_2, gdr.TGL_REQUEST, gdr.TGL_DIBUAT, gdr.STATUS, users.KD_JABATAN, users.ID_DEPT, users.DEPT
+                                    FROM TR_FORM1_GDR As gdr
+                                    INNER JOIN MS_USER As users On gdr.DIBUAT = users.USERNAME
+                                    INNER JOIN MS_DEPT As dept On users.ID_DEPT = dept.ID
+									UNION 
+									SELECT gdr.NO_FORM, gdr.KODE_FORM, gdr.KD_BRAND, gdr.DIBUAT,  gdr.DITERIMA_2, gdr.TGL_REQUEST, gdr.TGL_DIBUAT, gdr.STATUS,  users.KD_JABATAN, users.ID_DEPT, users.DEPT
+                                    FROM TR_FORM2_GDR As gdr
+                                    INNER JOIN MS_USER As users On gdr.DIBUAT = users.USERNAME
+                                    INNER JOIN MS_DEPT As dept On users.ID_DEPT = dept.ID
+									UNION
+									SELECT gdr.NO_FORM, gdr.KODE_FORM, gdr.KD_BRAND, gdr.DIBUAT,  gdr.DITERIMA_2, gdr.TGL_REQUEST, gdr.TGL_DIBUAT, gdr.STATUS,  users.KD_JABATAN, users.ID_DEPT, users.DEPT
+                                    FROM TR_FORM3_GDR As gdr
+                                    INNER JOIN MS_USER As users On gdr.DIBUAT = users.USERNAME
+                                    INNER JOIN MS_DEPT As dept On users.ID_DEPT = dept.ID
+									)
+									SELECT y.NO_FORM, y.KODE_FORM, y.DIBUAT, y.DITERIMA_2, y.TGL_REQUEST, y.TGL_DIBUAT, y.STATUS, y.KD_JABATAN, y.ID_DEPT, 
+									y.DEPT, y.Last_Activity, DATEDIFF(day, GETDATE(), y.Last_Activity) AS Hari, y.USERNAME,y.URUTAN, y.URUTAN_NEXT, y.KD_BRAND, userhandle.KD_JABATAN As kdjbt,
+									CASE
+										WHEN userhandle.KD_JABATAN = 'HDP' THEN users.USERNAME
+										WHEN userhandle.KD_JABATAN = 'HDVM' THEN 'Bambang'
+										WHEN userhandle.KD_JABATAN = 'HSD' THEN 'YanaPrianaSjam'
+										WHEN userhandle.KD_JABATAN = 'GD' THEN y.DITERIMA_2
+										WHEN userhandle.KD_JABATAN = 'CM' AND (y.KODE_FORM = 'FRM-0001' OR y.KODE_FORM = 'FRM-0003') THEN 'Tedy'
+										WHEN userhandle.KD_JABATAN = 'CM' AND (y.KODE_FORM = 'FRM-0002') THEN 'EdoAdrianto'
+										WHEN y.STATUS = 'On-Revise' THEN y.DIBUAT
+										WHEN y.STATUS = 'On-Revise-Design' THEN y.DITERIMA_2
+										ELSE '-' END As usernext
+									FROM(
+											SELECT z.NO_FORM, z.KODE_FORM, z.DIBUAT, z.DITERIMA_2, z.TGL_REQUEST, z.TGL_DIBUAT, 
+											z.STATUS, z.KD_JABATAN, z.ID_DEPT, z.DEPT, z.KD_BRAND, 
+											z.Last_Activity, activity.USERNAME, 
+											activity.URUTAN, activity.URUTAN + 1 As URUTAN_NEXT
+											FROM (
+															SELECT combine.*, MAX(activity.ACTIVITY_TIME) As Last_Activity FROM TblCombine As combine
+															INNER JOIN TR_FORM_GDR_ACTIVITY As activity On combine.KODE_FORM = activity.KODE_FORM 
+															INNER JOIN MS_USER_HANDLE As userhandle On activity.URUTAN = userhandle.URUTAN
+															WHERE activity.URUTAN IN
+															(
+																SELECT DISTINCT MAX(URUTAN) AS URUTAN FROM TR_FORM_GDR_ACTIVITY  GROUP BY NO_FORM
+															)
+															AND DIBUAT = @Username AND ','+@ID_DEPT+',' LIKE '%,'+CAST(ID_DEPT AS varchar)+',%'
+															AND combine.STATUS <> 'Done'
+															GROUP BY combine.NO_FORM, combine.KODE_FORM, combine.KD_BRAND, combine.DIBUAT, combine.DITERIMA_2, combine.TGL_REQUEST, combine.TGL_DIBUAT, combine.STATUS, combine.KD_JABATAN, combine.ID_DEPT, combine.DEPT
+															) As z
+															INNER JOIN TR_FORM_GDR_ACTIVITY As activity On z.Last_Activity = activity.ACTIVITY_TIME
+															INNER JOIN MS_USER_HANDLE As userhandle ON activity.URUTAN = userhandle.URUTAN and activity.KODE_FORM = userhandle.KODE_FORM
+									) As y
+									INNER JOIN MS_USER_HANDLE As userhandle On y.URUTAN_NEXT = userhandle.URUTAN AND y.KODE_FORM = userhandle.KODE_FORM
+									LEFT JOIN MS_USER As users ON userhandle.KD_JABATAN = users.KD_JABATAN AND (users.ID_DEPT = y.ID_DEPT OR users.KD_BRAND = y.KD_BRAND)--AND (users.ID_DEPT = users.ID_DEPT OR users.KD_BRAND = users.KD_BRAND)
+									WHERE
+								    y.ID_DEPT like '%'+case when len(y.ID_DEPT)=0 then y.ID_DEPT else y.ID_DEPT end+'%'
+									OR y.KD_BRAND like '%'+case when len(y.KD_BRAND)=0 then y.KD_BRAND else y.KD_BRAND end+'%'
+
+
+									--DECLARE @USERNAME Varchar(50) = 'BRN';
+									--DECLARE @ID_DEPT Varchar(50) = '03';
+									--DECLARE @KD_BRAND Varchar(50) = '91';
+									--SELECT * FROM MS_USER
+									--WHERE
+									--@KD_BRAND like '%'+case when len(KD_BRAND)=0 then @KD_BRAND else KD_BRAND end+'%'

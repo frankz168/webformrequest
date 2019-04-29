@@ -20,7 +20,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT KODE_FORM, NM_FORM FROM MS_FORM"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM MS_FORM"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 CnString.Open();
@@ -32,14 +32,14 @@ namespace WebDelamiFormRequest.DataLayer
             return dataSet;
         }
 
-        public virtual DataSet GetDataByKey(String ID)
+        public virtual DataSet GetDataByKey(String KODE_FORM)
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT KODE_FORM, NM_FORM FROM MS_FORM WHERE ID = @ID"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM MS_FORM WHERE KODE_FORM = @KODE_FORM"), CnString))
             {
                 command.CommandType = CommandType.Text;
-                command.Parameters.Add("@ID", ID);
+                command.Parameters.Add("@KODE_FORM", KODE_FORM);
                 CnString.Open();
 
                 adapter.SelectCommand = command;
@@ -53,7 +53,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT KODE_FORM, NM_FORM FROM MS_FORM WHERE {0} ", Where), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM MS_FORM WHERE {0} ", Where), CnString))
             {
                 CnString.Open();
 
@@ -70,19 +70,21 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("INSERT INTO MS_FORM(KODE_FORM, NM_FORM) VALUES (@KODE_FORM, @NM_FORM)");
+                string query = String.Format("INSERT INTO MS_FORM(KODE_FORM, NM_FORM, FORM_TYPE) VALUES (@KODE_FORM, @NM_FORM, @FORM_TYPE)");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
                     command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = msform.KODE_FORM;
                     command.Parameters.Add("@NM_FORM", SqlDbType.VarChar).Value = msform.NM_FORM;
+                    command.Parameters.Add("@FORM_TYPE", SqlDbType.VarChar).Value = msform.FORM_TYPE;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -96,19 +98,21 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("UPDATE MS_FORM SET NM_FORM = @NM_FORM WHERE KODE_FORM = @KODE_FORM ");
+                string query = String.Format("UPDATE MS_FORM SET NM_FORM = @NM_FORM, FORM_TYPE = @FORM_TYPE WHERE KODE_FORM = @KODE_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
                     command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = msform.KODE_FORM;
                     command.Parameters.Add("@NM_FORM", SqlDbType.VarChar).Value = msform.NM_FORM;
+                    command.Parameters.Add("@FORM_TYPE", SqlDbType.VarChar).Value = msform.FORM_TYPE;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -116,7 +120,7 @@ namespace WebDelamiFormRequest.DataLayer
             }
         }
 
-        public void DeleteByKey(String ID)
+        public void DeleteByKey(String KODE_FORM)
         {
             string newId = "Berhasil";
             try
@@ -126,7 +130,7 @@ namespace WebDelamiFormRequest.DataLayer
                 using (SqlCommand command = new SqlCommand(string.Format("DELETE FROM MS_FORM  WHERE KODE_FORM = @KODE_FORM"), CnString))
                 {
                     command.CommandType = CommandType.Text;
-                    command.Parameters.Add("@ID", ID);
+                    command.Parameters.Add("@KODE_FORM", KODE_FORM);
                     CnString.Open();
 
                     adapter.SelectCommand = command;
@@ -137,6 +141,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -163,6 +168,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {

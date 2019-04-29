@@ -35,7 +35,8 @@ public static class MailHelper
             smtp.Port = Convert.ToInt16(MailSmtpPort);
             smtp.Timeout = MailTimeOut;
             smtp.UseDefaultCredentials = true;
-            smtp.EnableSsl = true;
+
+            smtp.EnableSsl = (smtp.Port == 587);
             smtp.Credentials = new System.Net.NetworkCredential(SenderMailAddress, SenderMailPassword);
             smtp.Send(mail);
 

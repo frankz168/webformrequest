@@ -32,7 +32,7 @@ namespace WebDelamiFormRequest.DataLayer
                         MS_USER item = new MS_USER();
                     
                         item.ID = reader.GetInt64(0);
-                        item.ID_DEPT = reader.GetInt32(1);
+                        item.ID_DEPT = reader.GetString(1);
                         item.USERNAME = reader.GetString(2);
                         item.PASSWORD = reader.GetString(3);
                         item.DEPT = reader.IsDBNull(reader.GetOrdinal("DEPT")) ? "" : reader.GetString(4);
@@ -45,6 +45,8 @@ namespace WebDelamiFormRequest.DataLayer
                         item.LAST_PASSWORD_CHANGE = reader.IsDBNull(reader.GetOrdinal("LAST_PASSWORD_CHANGE")) ? (DateTime?)null : reader.GetDateTime(11);
                         item.KD_BRAND = reader.IsDBNull(reader.GetOrdinal("KD_BRAND")) ? "" : reader.GetString(12);
                         item.KD_JABATAN = reader.IsDBNull(reader.GetOrdinal("KD_JABATAN")) ? "" : reader.GetString(13);
+                        item.FULL_NAME = reader.IsDBNull(reader.GetOrdinal("FULL_NAME")) ? "" : reader.GetString(14);
+                        item.UserProfileId = reader.IsDBNull(reader.GetOrdinal("UserProfileId")) ? "" : reader.GetString(15);
                         listMsUser.Add(item);
                     }
                     reader.Close();

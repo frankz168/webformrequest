@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using WebDelamiFormRequest.Domain;
+using System.Web.Services;
 
 namespace WebDelamiFormRequest.DataLayer
 {
@@ -20,7 +21,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID_MATERI, NO_FORM, JENIS_MATERIAL_CETAK, UKURAN, JUMLAH_A4, JUMLAH_A5, JUMLAH_QTY, PENJELASAN FROM TR_FORM1_GDR_MATERI"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR_MATERI"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 CnString.Open();
@@ -36,7 +37,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID_MATERI, NO_FORM, JENIS_MATERIAL_CETAK, UKURAN, JUMLAH_A4, JUMLAH_A5, JUMLAH_QTY, PENJELASAN FROM TR_FORM1_GDR_MATERI WHERE ID_MATERI = @ID_MATERI"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR_MATERI WHERE ID_MATERI = @ID_MATERI"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.Add("@ID_MATERI", ID_MATERI);
@@ -53,7 +54,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT ID_MATERI, NO_FORM, JENIS_MATERIAL_CETAK, UKURAN, JUMLAH_A4, JUMLAH_A5, JUMLAH_QTY, PENJELASAN FROM TR_FORM1_GDR_MATERI WHERE {0} ", Where), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR_MATERI WHERE {0} ", Where), CnString))
             {
                 CnString.Open();
 
@@ -70,17 +71,18 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("INSERT INTO TR_FORM1_GDR_MATERI(ID_MATERI, NO_FORM, JENIS_MATERIAL_CETAK, UKURAN, JUMLAH_A4, JUMLAH_A5, JUMLAH_QTY, PENJELASAN) VALUES (@ID_MATERI, @NO_FORM, @JENIS_MATERIAL_CETAK, @UKURAN, @JUMLAH_A4, @JUMLAH_A5, @JUMLAH_QTY, @PENJELASAN)");
+                string query = String.Format("INSERT INTO TR_FORM1_GDR_MATERI(NO_FORM, site, nama_cust, JENIS_MATERIAL_CETAK, UKURAN, MATERIAL, JUMLAH_QTY, PENJELASAN) VALUES (@NO_FORM, @site, @nama_cust, @JENIS_MATERIAL_CETAK, @UKURAN, @MATERIAL, @JUMLAH_QTY, @PENJELASAN)");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
-                    command.Parameters.Add("@ID_MATERI", SqlDbType.Int).Value = trform1gdrmateri.ID_MATERI;
+                    //command.Parameters.Add("@ID_MATERI", SqlDbType.Int).Value = trform1gdrmateri.ID_MATERI;
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdrmateri.NO_FORM;
+                    command.Parameters.Add("@site", SqlDbType.VarChar).Value = trform1gdrmateri.site;
+                    command.Parameters.Add("@nama_cust", SqlDbType.VarChar).Value = trform1gdrmateri.nama_cust;
                     command.Parameters.Add("@JENIS_MATERIAL_CETAK", SqlDbType.VarChar).Value = trform1gdrmateri.JENIS_MATERIAL_CETAK;
                     command.Parameters.Add("@UKURAN", SqlDbType.VarChar).Value = trform1gdrmateri.UKURAN;
-                    command.Parameters.Add("@JUMLAH_A4", SqlDbType.Decimal).Value = trform1gdrmateri.JUMLAH_A4;
-                    command.Parameters.Add("@JUMLAH_A5", SqlDbType.Decimal).Value = trform1gdrmateri.JUMLAH_A5;
+                    command.Parameters.Add("@MATERIAL", SqlDbType.VarChar).Value = trform1gdrmateri.MATERIAL;
                     command.Parameters.Add("@JUMLAH_QTY", SqlDbType.Decimal).Value = trform1gdrmateri.JUMLAH_QTY;
                     command.Parameters.Add("@PENJELASAN", SqlDbType.VarChar).Value = trform1gdrmateri.PENJELASAN;
                     command.ExecuteScalar();
@@ -89,6 +91,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -102,17 +105,18 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("UPDATE TR_FORM1_GDR_MATERI SET NO_FORM = @NO_FORM, JENIS_MATERIAL_CETAK = @JENIS_MATERIAL_CETAK, UKURAN = @UKURAN, JUMLAH_A4 = @JUMLAH_A4, JUMLAH_A5 = @JUMLAH_A5, JUMLAH_QTY = @JUMLAH_QTY, PENJELASAN = @PENJELASAN WHERE ID_MATERI = @ID_MATERI ");
+                string query = String.Format("UPDATE TR_FORM1_GDR_MATERI SET NO_FORM = @NO_FORM, site = @site, nama_cust = @nama_cust, JENIS_MATERIAL_CETAK = @JENIS_MATERIAL_CETAK, UKURAN = @UKURAN, MATERIAL = @MATERIAL, JUMLAH_QTY = @JUMLAH_QTY, PENJELASAN = @PENJELASAN WHERE ID_MATERI = @ID_MATERI ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
                     command.Parameters.Add("@ID_MATERI", SqlDbType.Int).Value = trform1gdrmateri.ID_MATERI;
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdrmateri.NO_FORM;
+                    command.Parameters.Add("@site", SqlDbType.VarChar).Value = trform1gdrmateri.site;
+                    command.Parameters.Add("@nama_cust", SqlDbType.VarChar).Value = trform1gdrmateri.nama_cust;
                     command.Parameters.Add("@JENIS_MATERIAL_CETAK", SqlDbType.VarChar).Value = trform1gdrmateri.JENIS_MATERIAL_CETAK;
                     command.Parameters.Add("@UKURAN", SqlDbType.VarChar).Value = trform1gdrmateri.UKURAN;
-                    command.Parameters.Add("@JUMLAH_A4", SqlDbType.Decimal).Value = trform1gdrmateri.JUMLAH_A4;
-                    command.Parameters.Add("@JUMLAH_A5", SqlDbType.Decimal).Value = trform1gdrmateri.JUMLAH_A5;
+                    command.Parameters.Add("@MATERIAL", SqlDbType.VarChar).Value = trform1gdrmateri.MATERIAL;
                     command.Parameters.Add("@JUMLAH_QTY", SqlDbType.Decimal).Value = trform1gdrmateri.JUMLAH_QTY;
                     command.Parameters.Add("@PENJELASAN", SqlDbType.VarChar).Value = trform1gdrmateri.PENJELASAN;
                     command.ExecuteScalar();
@@ -121,6 +125,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -149,6 +154,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -175,6 +181,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {

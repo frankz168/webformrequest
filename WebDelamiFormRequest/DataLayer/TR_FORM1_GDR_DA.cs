@@ -20,7 +20,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT NO_FORM, KODE_FORM, JENIS, TGL_REQUEST, ID_DEPT, KD_BRAND, DEPT_STORE_MALL, KOTA, ALOKASI_BUDGET, JADWAL_IMAGE, UTK_TOKO, JADWAL_ACARA, JADWAL_BUKA_TOKO, RFR_LAMPIRAN1, RFR_LAMPIRAN2, RFR_LAMPIRAN3, RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM, JADWAL_PASANG, NAMA, JABATAN, ALAMAT_KIRIM, NO_TELP, EMAIL, DIBUAT, TGL_DIBUAT, MENYETUJUI1, TGL_MENYETUJUI1, MENYETUJUI2, TGL_MENYETUJUI2, DITERIMA_1, TGL_DITERIMA_1, DITERIMA_2, TGL_DITERIMA_2, DITERIMA_3, TGL_DITERIMA_3, STATUS, REVISI FROM TR_FORM1_GDR"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 CnString.Open();
@@ -36,7 +36,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT NO_FORM, KODE_FORM, JENIS, TGL_REQUEST, ID_DEPT, KD_BRAND, DEPT_STORE_MALL, KOTA, ALOKASI_BUDGET, JADWAL_IMAGE, UTK_TOKO, JADWAL_ACARA, JADWAL_BUKA_TOKO, RFR_LAMPIRAN1, RFR_LAMPIRAN2, RFR_LAMPIRAN3, RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM, JADWAL_PASANG, NAMA, JABATAN, ALAMAT_KIRIM, NO_TELP, EMAIL, DIBUAT, TGL_DIBUAT, MENYETUJUI1, TGL_MENYETUJUI1, MENYETUJUI2, TGL_MENYETUJUI2, DITERIMA_1, TGL_DITERIMA_1, DITERIMA_2, TGL_DITERIMA_2, DITERIMA_3, TGL_DITERIMA_3, STATUS, REVISI FROM TR_FORM1_GDR WHERE NO_FORM = @NO_FORM"), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR WHERE NO_FORM = @NO_FORM"), CnString))
             {
                 command.CommandType = CommandType.Text;
                 command.Parameters.Add("@NO_FORM", NO_FORM);
@@ -53,7 +53,7 @@ namespace WebDelamiFormRequest.DataLayer
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet dataSet = new DataSet();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT NO_FORM, KODE_FORM, JENIS, TGL_REQUEST, ID_DEPT, KD_BRAND, DEPT_STORE_MALL, KOTA, ALOKASI_BUDGET, JADWAL_IMAGE, UTK_TOKO, JADWAL_ACARA, JADWAL_BUKA_TOKO, RFR_LAMPIRAN1, RFR_LAMPIRAN2, RFR_LAMPIRAN3, RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM, JADWAL_PASANG, NAMA, JABATAN, ALAMAT_KIRIM, NO_TELP, EMAIL, DIBUAT, TGL_DIBUAT, MENYETUJUI1, TGL_MENYETUJUI1, MENYETUJUI2, TGL_MENYETUJUI2, DITERIMA_1, TGL_DITERIMA_1, DITERIMA_2, TGL_DITERIMA_2, DITERIMA_3, TGL_DITERIMA_3, STATUS, REVISI FROM TR_FORM1_GDR WHERE {0} ", Where), CnString))
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT * FROM TR_FORM1_GDR WHERE {0} ", Where), CnString))
             {
                 CnString.Open();
 
@@ -70,24 +70,26 @@ namespace WebDelamiFormRequest.DataLayer
             try
             {
 
-                string query = String.Format("INSERT INTO TR_FORM1_GDR(NO_FORM, KODE_FORM, JENIS, TGL_REQUEST, ID_DEPT, KD_BRAND, DEPT_STORE_MALL, KOTA, ALOKASI_BUDGET, JADWAL_IMAGE, UTK_TOKO, JADWAL_ACARA, JADWAL_BUKA_TOKO, RFR_LAMPIRAN1, RFR_LAMPIRAN2, RFR_LAMPIRAN3, RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM, JADWAL_PASANG, NAMA, JABATAN, ALAMAT_KIRIM, NO_TELP, EMAIL, DIBUAT, TGL_DIBUAT, MENYETUJUI1, TGL_MENYETUJUI1, MENYETUJUI2, TGL_MENYETUJUI2, DITERIMA_1, TGL_DITERIMA_1, DITERIMA_2, TGL_DITERIMA_2, DITERIMA_3, TGL_DITERIMA_3, STATUS, REVISI) VALUES (@NO_FORM, @KODE_FORM, @JENIS, @TGL_REQUEST, @ID_DEPT, @KD_BRAND, @DEPT_STORE_MALL, @KOTA, @ALOKASI_BUDGET, @JADWAL_IMAGE, @UTK_TOKO, @JADWAL_ACARA, @JADWAL_BUKA_TOKO, @RFR_LAMPIRAN1, @RFR_LAMPIRAN2, @RFR_LAMPIRAN3, @RFR_LAMPIRAN4, @JADWAL_SELESAI_DESAIN, @JADWAL_PRODUKSI_CETAK, @JADWAL_KIRIM, @JADWAL_PASANG, @NAMA, @JABATAN, @ALAMAT_KIRIM, @NO_TELP, @EMAIL, @DIBUAT, @TGL_DIBUAT, @MENYETUJUI1, @TGL_MENYETUJUI1, @MENYETUJUI2, @TGL_MENYETUJUI2, @DITERIMA_1, @TGL_DITERIMA_1, @DITERIMA_2, @TGL_DITERIMA_2, @DITERIMA_3, @TGL_DITERIMA_3, @STATUS, @REVISI)");
+                string query = String.Format("INSERT INTO TR_FORM1_GDR(NO_FORM, KODE_FORM, PERMINTAAN_DESIGN, JENIS, TGL_REQUEST, TGL_REQUIRED, ID_DEPT, KD_BRAND, DEPT_STORE_MALL, ALOKASI_BUDGET, JADWAL_IMAGE, JADWAL_ACARABKTOKO, REFERENSI_DESIGN, RFR_LAMPIRAN_STORE, RFR_LAMPIRAN_MATERIAL, RFR_LAMPIRAN1, RFR_LAMPIRAN2, RFR_LAMPIRAN3, RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM, JADWAL_FOTO, JADWAL_DI, JADWAL_ADM_CREATIVE, DIBUAT, TGL_DIBUAT, MENYETUJUI1, TGL_MENYETUJUI1, MENYETUJUI2, TGL_MENYETUJUI2, MENYETUJUI3, TGL_MENYETUJUI3, DITERIMA_1, TGL_DITERIMA_1, DITERIMA_2, TGL_DITERIMA_2, DITERIMA_3, TGL_DITERIMA_3, DITERIMA_LAIN_1, TGL_DITERIMA_LAIN_1, DITERIMA_LAIN_2, TGL_DITERIMA_LAIN_2, DITERIMA_LAIN_3, TGL_DITERIMA_LAIN_3, DITERIMA_LAIN_4, TGL_DITERIMA_LAIN_4, DITERIMA_LAIN_5_MATERI, TGL_DITERIMA_LAIN_5_MATERI, DITERIMA_LAIN_5, TGL_DITERIMA_LAIN_5, STATUS, REVISI, USER_CURRENT, NEXT_USER, URUTAN_USER_CURRENT, URUTAN_NEXT_USER, PHOTOGRAPHER, DIGITAL_IMAGING, PRODUCTION) VALUES (@NO_FORM, @KODE_FORM, @PERMINTAAN_DESIGN, @JENIS, @TGL_REQUEST, @TGL_REQUIRED, @ID_DEPT, @KD_BRAND, @DEPT_STORE_MALL, @ALOKASI_BUDGET, @JADWAL_IMAGE, @JADWAL_ACARABKTOKO, @REFERENSI_DESIGN, @RFR_LAMPIRAN_STORE, @RFR_LAMPIRAN_MATERIAL, @RFR_LAMPIRAN1, @RFR_LAMPIRAN2, @RFR_LAMPIRAN3, @RFR_LAMPIRAN4, @JADWAL_SELESAI_DESAIN, @JADWAL_PRODUKSI_CETAK, @JADWAL_KIRIM, @JADWAL_FOTO, @JADWAL_DI, @JADWAL_ADM_CREATIVE, @DIBUAT, @TGL_DIBUAT, @MENYETUJUI1, @TGL_MENYETUJUI1, @MENYETUJUI2, @TGL_MENYETUJUI2, @MENYETUJUI3, @TGL_MENYETUJUI3, @DITERIMA_1, @TGL_DITERIMA_1, @DITERIMA_2, @TGL_DITERIMA_2, @DITERIMA_3, @TGL_DITERIMA_3, @DITERIMA_LAIN_1, @TGL_DITERIMA_LAIN_1, @DITERIMA_LAIN_2, @TGL_DITERIMA_LAIN_2, @DITERIMA_LAIN_3, @TGL_DITERIMA_LAIN_3, @DITERIMA_LAIN_4, @TGL_DITERIMA_LAIN_4, @DITERIMA_LAIN_5_MATERI, @TGL_DITERIMA_LAIN_5_MATERI, @DITERIMA_LAIN_5, @TGL_DITERIMA_LAIN_5, @STATUS, @REVISI, @USER_CURRENT, @NEXT_USER, @URUTAN_USER_CURRENT, @URUTAN_NEXT_USER, @PHOTOGRAPHER, @DIGITAL_IMAGING, @PRODUCTION)");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
                 {
                     command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
                     command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = trform1gdr.KODE_FORM;
+                    command.Parameters.Add("@PERMINTAAN_DESIGN", SqlDbType.VarChar).Value = trform1gdr.PERMINTAAN_DESIGN;
                     command.Parameters.Add("@JENIS", SqlDbType.VarChar).Value = trform1gdr.JENIS;
                     command.Parameters.Add("@TGL_REQUEST", SqlDbType.DateTime).Value = trform1gdr.TGL_REQUEST;
-                    command.Parameters.Add("@ID_DEPT", SqlDbType.Int).Value = trform1gdr.ID_DEPT;
+                    command.Parameters.Add("@TGL_REQUIRED", SqlDbType.DateTime).Value = trform1gdr.TGL_REQUIRED;
+                    command.Parameters.Add("@ID_DEPT", SqlDbType.VarChar).Value = trform1gdr.ID_DEPT;
                     command.Parameters.Add("@KD_BRAND", SqlDbType.VarChar).Value = trform1gdr.KD_BRAND;
                     command.Parameters.Add("@DEPT_STORE_MALL", SqlDbType.VarChar).Value = trform1gdr.DEPT_STORE_MALL;
-                    command.Parameters.Add("@KOTA", SqlDbType.VarChar).Value = trform1gdr.KOTA;
                     command.Parameters.Add("@ALOKASI_BUDGET", SqlDbType.DateTime).Value = trform1gdr.ALOKASI_BUDGET;
                     command.Parameters.Add("@JADWAL_IMAGE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_IMAGE;
-                    command.Parameters.Add("@UTK_TOKO", SqlDbType.VarChar).Value = trform1gdr.UTK_TOKO;
-                    command.Parameters.Add("@JADWAL_ACARA", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ACARA;
-                    command.Parameters.Add("@JADWAL_BUKA_TOKO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_BUKA_TOKO;
+                    command.Parameters.Add("@JADWAL_ACARABKTOKO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ACARABKTOKO;
+                    command.Parameters.Add("@REFERENSI_DESIGN", SqlDbType.VarChar).Value = trform1gdr.REFERENSI_DESIGN;
+                    command.Parameters.Add("@RFR_LAMPIRAN_STORE", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN_STORE;
+                    command.Parameters.Add("@RFR_LAMPIRAN_MATERIAL", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN_MATERIAL;
                     command.Parameters.Add("@RFR_LAMPIRAN1", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN1;
                     command.Parameters.Add("@RFR_LAMPIRAN2", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN2;
                     command.Parameters.Add("@RFR_LAMPIRAN3", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN3;
@@ -95,32 +97,51 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@JADWAL_SELESAI_DESAIN", SqlDbType.DateTime).Value = trform1gdr.JADWAL_SELESAI_DESAIN;
                     command.Parameters.Add("@JADWAL_PRODUKSI_CETAK", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PRODUKSI_CETAK;
                     command.Parameters.Add("@JADWAL_KIRIM", SqlDbType.DateTime).Value = trform1gdr.JADWAL_KIRIM;
-                    command.Parameters.Add("@JADWAL_PASANG", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PASANG;
-                    command.Parameters.Add("@NAMA", SqlDbType.VarChar).Value = trform1gdr.NAMA;
-                    command.Parameters.Add("@JABATAN", SqlDbType.VarChar).Value = trform1gdr.JABATAN;
-                    command.Parameters.Add("@ALAMAT_KIRIM", SqlDbType.VarChar).Value = trform1gdr.ALAMAT_KIRIM;
-                    command.Parameters.Add("@NO_TELP", SqlDbType.VarChar).Value = trform1gdr.NO_TELP;
-                    command.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = trform1gdr.EMAIL;
+                    command.Parameters.Add("@JADWAL_FOTO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_FOTO;
+                    command.Parameters.Add("@JADWAL_DI", SqlDbType.DateTime).Value = trform1gdr.JADWAL_DI;
+                    command.Parameters.Add("@JADWAL_ADM_CREATIVE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ADM_CREATIVE;
                     command.Parameters.Add("@DIBUAT", SqlDbType.VarChar).Value = trform1gdr.DIBUAT;
                     command.Parameters.Add("@TGL_DIBUAT", SqlDbType.DateTime).Value = trform1gdr.TGL_DIBUAT;
                     command.Parameters.Add("@MENYETUJUI1", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI1;
                     command.Parameters.Add("@TGL_MENYETUJUI1", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI1;
                     command.Parameters.Add("@MENYETUJUI2", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI2;
                     command.Parameters.Add("@TGL_MENYETUJUI2", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI2;
+                    command.Parameters.Add("@MENYETUJUI3", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI3;
+                    command.Parameters.Add("@TGL_MENYETUJUI3", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI3;
                     command.Parameters.Add("@DITERIMA_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_1;
                     command.Parameters.Add("@TGL_DITERIMA_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_1;
                     command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
                     command.Parameters.Add("@TGL_DITERIMA_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_2;
                     command.Parameters.Add("@DITERIMA_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_3;
                     command.Parameters.Add("@TGL_DITERIMA_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_3;
+                    command.Parameters.Add("@DITERIMA_LAIN_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_1;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_1;
+                    command.Parameters.Add("@DITERIMA_LAIN_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_2;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_2;
+                    command.Parameters.Add("@DITERIMA_LAIN_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_3;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_3;
+                    command.Parameters.Add("@DITERIMA_LAIN_4", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_4;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_4", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_4;
+                    command.Parameters.Add("@DITERIMA_LAIN_5_MATERI", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_5_MATERI;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_5_MATERI", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_5_MATERI;
+                    command.Parameters.Add("@DITERIMA_LAIN_5", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_5;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_5", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_5;
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
+                    command.Parameters.Add("@PHOTOGRAPHER", SqlDbType.VarChar).Value = trform1gdr.PHOTOGRAPHER;
+                    command.Parameters.Add("@DIGITAL_IMAGING", SqlDbType.VarChar).Value = trform1gdr.DIGITAL_IMAGING;
+                    command.Parameters.Add("@PRODUCTION", SqlDbType.VarChar).Value = trform1gdr.PRODUCTION;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -128,13 +149,15 @@ namespace WebDelamiFormRequest.DataLayer
             }
         }
 
+        //Update Flow Biasa Sesuai Urutan Graphic Design
+
         public void Update(TR_FORM1_GDR trform1gdr)
         {
             string newId = "Berhasil";
             try
             {
 
-                string query = String.Format("UPDATE TR_FORM1_GDR SET KODE_FORM = @KODE_FORM, JENIS = @JENIS, TGL_REQUEST = @TGL_REQUEST, ID_DEPT = @ID_DEPT, KD_BRAND = @KD_BRAND, DEPT_STORE_MALL = @DEPT_STORE_MALL, KOTA = @KOTA, ALOKASI_BUDGET = @ALOKASI_BUDGET, JADWAL_IMAGE = @JADWAL_IMAGE, UTK_TOKO = @UTK_TOKO, JADWAL_ACARA = @JADWAL_ACARA, JADWAL_BUKA_TOKO = @JADWAL_BUKA_TOKO, RFR_LAMPIRAN1 = @RFR_LAMPIRAN1, RFR_LAMPIRAN2 = @RFR_LAMPIRAN2, RFR_LAMPIRAN3 = @RFR_LAMPIRAN3, RFR_LAMPIRAN4 = @RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN = @JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK = @JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM = @JADWAL_KIRIM, JADWAL_PASANG = @JADWAL_PASANG, NAMA = @NAMA, JABATAN = @JABATAN, ALAMAT_KIRIM = @ALAMAT_KIRIM, NO_TELP = @NO_TELP, EMAIL = @EMAIL, DIBUAT = @DIBUAT, TGL_DIBUAT = @TGL_DIBUAT, MENYETUJUI1 = @MENYETUJUI1, TGL_MENYETUJUI1 = @TGL_MENYETUJUI1, MENYETUJUI2 = @MENYETUJUI2, TGL_MENYETUJUI2 = @TGL_MENYETUJUI2, DITERIMA_1 = @DITERIMA_1, TGL_DITERIMA_1 = @TGL_DITERIMA_1, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2, DITERIMA_3 = @DITERIMA_3, TGL_DITERIMA_3 = @TGL_DITERIMA_3, STATUS = @STATUS, REVISI = @REVISI WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET KODE_FORM = @KODE_FORM, JENIS = @JENIS, TGL_REQUEST = @TGL_REQUEST, TGL_REQUIRED = @TGL_REQUIRED, DEPT_STORE_MALL = @DEPT_STORE_MALL, ALOKASI_BUDGET = @ALOKASI_BUDGET, JADWAL_IMAGE = @JADWAL_IMAGE, JADWAL_ACARABKTOKO = @JADWAL_ACARABKTOKO, REFERENSI_DESIGN = @REFERENSI_DESIGN, RFR_LAMPIRAN_STORE = @RFR_LAMPIRAN_STORE, RFR_LAMPIRAN_MATERIAL = @RFR_LAMPIRAN_MATERIAL, RFR_LAMPIRAN1 = @RFR_LAMPIRAN1, RFR_LAMPIRAN2 = @RFR_LAMPIRAN2, RFR_LAMPIRAN3 = @RFR_LAMPIRAN3, RFR_LAMPIRAN4 = @RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN = @JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK = @JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM = @JADWAL_KIRIM, JADWAL_FOTO = @JADWAL_FOTO, JADWAL_DI = @JADWAL_DI, JADWAL_ADM_CREATIVE = @JADWAL_ADM_CREATIVE, DIBUAT = @DIBUAT, TGL_DIBUAT = @TGL_DIBUAT, MENYETUJUI1 = @MENYETUJUI1, TGL_MENYETUJUI1 = @TGL_MENYETUJUI1, MENYETUJUI2 = @MENYETUJUI2, TGL_MENYETUJUI2 = @TGL_MENYETUJUI2, MENYETUJUI3 = @MENYETUJUI3, TGL_MENYETUJUI3 = @TGL_MENYETUJUI3,  DITERIMA_1 = @DITERIMA_1, TGL_DITERIMA_1 = @TGL_DITERIMA_1, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2, DITERIMA_3 = @DITERIMA_3, TGL_DITERIMA_3 = @TGL_DITERIMA_3, STATUS = @STATUS, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -143,15 +166,16 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = trform1gdr.KODE_FORM;
                     command.Parameters.Add("@JENIS", SqlDbType.VarChar).Value = trform1gdr.JENIS;
                     command.Parameters.Add("@TGL_REQUEST", SqlDbType.DateTime).Value = trform1gdr.TGL_REQUEST;
-                    command.Parameters.Add("@ID_DEPT", SqlDbType.Int).Value = trform1gdr.ID_DEPT;
-                    command.Parameters.Add("@KD_BRAND", SqlDbType.VarChar).Value = trform1gdr.KD_BRAND;
+                    command.Parameters.Add("@TGL_REQUIRED", SqlDbType.DateTime).Value = trform1gdr.TGL_REQUIRED;
+                    //command.Parameters.Add("@ID_DEPT", SqlDbType.Int).Value = trform1gdr.ID_DEPT;
+                    //command.Parameters.Add("@KD_BRAND", SqlDbType.VarChar).Value = trform1gdr.KD_BRAND;
                     command.Parameters.Add("@DEPT_STORE_MALL", SqlDbType.VarChar).Value = trform1gdr.DEPT_STORE_MALL;
-                    command.Parameters.Add("@KOTA", SqlDbType.VarChar).Value = trform1gdr.KOTA;
                     command.Parameters.Add("@ALOKASI_BUDGET", SqlDbType.DateTime).Value = trform1gdr.ALOKASI_BUDGET;
                     command.Parameters.Add("@JADWAL_IMAGE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_IMAGE;
-                    command.Parameters.Add("@UTK_TOKO", SqlDbType.VarChar).Value = trform1gdr.UTK_TOKO;
-                    command.Parameters.Add("@JADWAL_ACARA", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ACARA;
-                    command.Parameters.Add("@JADWAL_BUKA_TOKO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_BUKA_TOKO;
+                    command.Parameters.Add("@JADWAL_ACARABKTOKO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ACARABKTOKO;
+                    command.Parameters.Add("@REFERENSI_DESIGN", SqlDbType.VarChar).Value = trform1gdr.REFERENSI_DESIGN;
+                    command.Parameters.Add("@RFR_LAMPIRAN_STORE", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN_STORE;
+                    command.Parameters.Add("@RFR_LAMPIRAN_MATERIAL", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN_MATERIAL;
                     command.Parameters.Add("@RFR_LAMPIRAN1", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN1;
                     command.Parameters.Add("@RFR_LAMPIRAN2", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN2;
                     command.Parameters.Add("@RFR_LAMPIRAN3", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN3;
@@ -159,18 +183,17 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@JADWAL_SELESAI_DESAIN", SqlDbType.DateTime).Value = trform1gdr.JADWAL_SELESAI_DESAIN;
                     command.Parameters.Add("@JADWAL_PRODUKSI_CETAK", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PRODUKSI_CETAK;
                     command.Parameters.Add("@JADWAL_KIRIM", SqlDbType.DateTime).Value = trform1gdr.JADWAL_KIRIM;
-                    command.Parameters.Add("@JADWAL_PASANG", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PASANG;
-                    command.Parameters.Add("@NAMA", SqlDbType.VarChar).Value = trform1gdr.NAMA;
-                    command.Parameters.Add("@JABATAN", SqlDbType.VarChar).Value = trform1gdr.JABATAN;
-                    command.Parameters.Add("@ALAMAT_KIRIM", SqlDbType.VarChar).Value = trform1gdr.ALAMAT_KIRIM;
-                    command.Parameters.Add("@NO_TELP", SqlDbType.VarChar).Value = trform1gdr.NO_TELP;
-                    command.Parameters.Add("@EMAIL", SqlDbType.VarChar).Value = trform1gdr.EMAIL;
+                    command.Parameters.Add("@JADWAL_FOTO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_FOTO;
+                    command.Parameters.Add("@JADWAL_DI", SqlDbType.DateTime).Value = trform1gdr.JADWAL_DI;
+                    command.Parameters.Add("@JADWAL_ADM_CREATIVE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ADM_CREATIVE;
                     command.Parameters.Add("@DIBUAT", SqlDbType.VarChar).Value = trform1gdr.DIBUAT;
                     command.Parameters.Add("@TGL_DIBUAT", SqlDbType.DateTime).Value = trform1gdr.TGL_DIBUAT;
                     command.Parameters.Add("@MENYETUJUI1", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI1;
                     command.Parameters.Add("@TGL_MENYETUJUI1", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI1;
                     command.Parameters.Add("@MENYETUJUI2", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI2;
                     command.Parameters.Add("@TGL_MENYETUJUI2", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI2;
+                    command.Parameters.Add("@MENYETUJUI3", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI3;
+                    command.Parameters.Add("@TGL_MENYETUJUI3", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI3;
                     command.Parameters.Add("@DITERIMA_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_1;
                     command.Parameters.Add("@TGL_DITERIMA_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_1;
                     command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
@@ -179,6 +202,67 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@TGL_DITERIMA_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_3;
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateDesign(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+
+                string query = String.Format("UPDATE TR_FORM1_GDR SET KODE_FORM = @KODE_FORM, JENIS = @JENIS, TGL_REQUEST = @TGL_REQUEST, TGL_REQUIRED = @TGL_REQUIRED, DEPT_STORE_MALL = @DEPT_STORE_MALL, ALOKASI_BUDGET = @ALOKASI_BUDGET, JADWAL_IMAGE = @JADWAL_IMAGE, JADWAL_ACARABKTOKO = @JADWAL_ACARABKTOKO, REFERENSI_DESIGN = @REFERENSI_DESIGN, RFR_LAMPIRAN1 = @RFR_LAMPIRAN1, RFR_LAMPIRAN2 = @RFR_LAMPIRAN2, RFR_LAMPIRAN3 = @RFR_LAMPIRAN3, RFR_LAMPIRAN4 = @RFR_LAMPIRAN4, JADWAL_SELESAI_DESAIN = @JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK = @JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM = @JADWAL_KIRIM, JADWAL_FOTO = @JADWAL_FOTO, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2, STATUS = @STATUS, REVISI = @REVISI, RFR_LAMPIRAN5_GD = @RFR_LAMPIRAN5_GD, RFR_LAMPIRAN6_GD = @RFR_LAMPIRAN6_GD, RFR_LAMPIRAN7_GD = @RFR_LAMPIRAN7_GD, RFR_LAMPIRAN8_GD = @RFR_LAMPIRAN8_GD, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@KODE_FORM", SqlDbType.VarChar).Value = trform1gdr.KODE_FORM;
+                    command.Parameters.Add("@JENIS", SqlDbType.VarChar).Value = trform1gdr.JENIS;
+                    command.Parameters.Add("@TGL_REQUEST", SqlDbType.DateTime).Value = trform1gdr.TGL_REQUEST;
+                    command.Parameters.Add("@TGL_REQUIRED", SqlDbType.DateTime).Value = trform1gdr.TGL_REQUIRED;
+                    //command.Parameters.Add("@ID_DEPT", SqlDbType.Int).Value = trform1gdr.ID_DEPT;
+                    //command.Parameters.Add("@KD_BRAND", SqlDbType.VarChar).Value = trform1gdr.KD_BRAND;
+                    command.Parameters.Add("@DEPT_STORE_MALL", SqlDbType.VarChar).Value = trform1gdr.DEPT_STORE_MALL;
+                    command.Parameters.Add("@ALOKASI_BUDGET", SqlDbType.DateTime).Value = trform1gdr.ALOKASI_BUDGET;
+                    command.Parameters.Add("@JADWAL_IMAGE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_IMAGE;
+                    command.Parameters.Add("@JADWAL_ACARABKTOKO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ACARABKTOKO;
+                    command.Parameters.Add("@REFERENSI_DESIGN", SqlDbType.VarChar).Value = trform1gdr.REFERENSI_DESIGN;
+                    command.Parameters.Add("@RFR_LAMPIRAN1", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN1;
+                    command.Parameters.Add("@RFR_LAMPIRAN2", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN2;
+                    command.Parameters.Add("@RFR_LAMPIRAN3", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN3;
+                    command.Parameters.Add("@RFR_LAMPIRAN4", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN4;
+                    command.Parameters.Add("@JADWAL_SELESAI_DESAIN", SqlDbType.DateTime).Value = trform1gdr.JADWAL_SELESAI_DESAIN;
+                    command.Parameters.Add("@JADWAL_PRODUKSI_CETAK", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PRODUKSI_CETAK;
+                    command.Parameters.Add("@JADWAL_KIRIM", SqlDbType.DateTime).Value = trform1gdr.JADWAL_KIRIM;
+                    command.Parameters.Add("@JADWAL_FOTO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_FOTO;
+                    command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
+                    command.Parameters.Add("@TGL_DITERIMA_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_2;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@RFR_LAMPIRAN5_GD", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN5_GD;
+                    command.Parameters.Add("@RFR_LAMPIRAN6_GD", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN6_GD;
+                    command.Parameters.Add("@RFR_LAMPIRAN7_GD", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN7_GD;
+                    command.Parameters.Add("@RFR_LAMPIRAN8_GD", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN8_GD;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
             }
@@ -197,7 +281,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DIBUAT = @DIBUAT, TGL_DIBUAT = @TGL_DIBUAT WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DIBUAT = @DIBUAT, TGL_DIBUAT = @TGL_DIBUAT, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -206,8 +290,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@DIBUAT", SqlDbType.VarChar).Value = trform1gdr.DIBUAT;
                     command.Parameters.Add("@TGL_DIBUAT", SqlDbType.DateTime).Value = trform1gdr.TGL_DIBUAT;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -215,6 +301,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -227,7 +314,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI1 = @MENYETUJUI1, TGL_MENYETUJUI1 = @TGL_MENYETUJUI1 WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI1 = @MENYETUJUI1, TGL_MENYETUJUI1 = @TGL_MENYETUJUI1, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -236,8 +323,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@MENYETUJUI1", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI1;
                     command.Parameters.Add("@TGL_MENYETUJUI1", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI1;
-                    command.ExecuteScalar();
-                   
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -245,6 +334,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -257,7 +347,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI2 = @MENYETUJUI2, TGL_MENYETUJUI2 = @TGL_MENYETUJUI2 WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI2 = @MENYETUJUI2, TGL_MENYETUJUI2 = @TGL_MENYETUJUI2, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -266,8 +356,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@MENYETUJUI2", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI2;
                     command.Parameters.Add("@TGL_MENYETUJUI2", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI2;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -275,6 +367,40 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateMenyetujui3(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI3 = @MENYETUJUI3, TGL_MENYETUJUI3 = @TGL_MENYETUJUI3, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@MENYETUJUI3", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI3;
+                    command.Parameters.Add("@TGL_MENYETUJUI3", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI3;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -287,7 +413,49 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                  string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_1 = @DITERIMA_1, TGL_DITERIMA_1 = @TGL_DITERIMA_1 WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET JADWAL_SELESAI_DESAIN = @JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK = @JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM = @JADWAL_KIRIM, JADWAL_FOTO = @JADWAL_FOTO, JADWAL_DI = @JADWAL_DI, JADWAL_ADM_CREATIVE = @JADWAL_ADM_CREATIVE, STATUS = @STATUS, DITERIMA_1 = @DITERIMA_1, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_1 = @TGL_DITERIMA_1, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER, PRODUCTION = @PRODUCTION WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@JADWAL_SELESAI_DESAIN", SqlDbType.DateTime).Value = trform1gdr.JADWAL_SELESAI_DESAIN;
+                    command.Parameters.Add("@JADWAL_PRODUKSI_CETAK", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PRODUKSI_CETAK;
+                    command.Parameters.Add("@JADWAL_KIRIM", SqlDbType.DateTime).Value = trform1gdr.JADWAL_KIRIM;
+                    command.Parameters.Add("@JADWAL_FOTO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_FOTO;
+                    command.Parameters.Add("@JADWAL_DI", SqlDbType.DateTime).Value = trform1gdr.JADWAL_DI;
+                    command.Parameters.Add("@JADWAL_ADM_CREATIVE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ADM_CREATIVE;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_1;
+                    command.Parameters.Add("@TGL_DITERIMA_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_1;
+                    command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
+                    command.Parameters.Add("@PRODUCTION", SqlDbType.VarChar).Value = trform1gdr.PRODUCTION;
+
+                    command.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateDiterima1NonJadwal(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_1 = @DITERIMA_1, TGL_DITERIMA_1 = @TGL_DITERIMA_1, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -296,7 +464,51 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@DITERIMA_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_1;
                     command.Parameters.Add("@TGL_DITERIMA_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_1;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateDiterima1RevisiContent(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET JADWAL_SELESAI_DESAIN = @JADWAL_SELESAI_DESAIN, JADWAL_PRODUKSI_CETAK = @JADWAL_PRODUKSI_CETAK, JADWAL_KIRIM = @JADWAL_KIRIM, JADWAL_FOTO = @JADWAL_FOTO, JADWAL_DI = @JADWAL_DI, JADWAL_ADM_CREATIVE = @JADWAL_ADM_CREATIVE, STATUS = @STATUS, DITERIMA_1 = @DITERIMA_1, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_1 = @TGL_DITERIMA_1, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@JADWAL_SELESAI_DESAIN", SqlDbType.DateTime).Value = trform1gdr.JADWAL_SELESAI_DESAIN;
+                    command.Parameters.Add("@JADWAL_PRODUKSI_CETAK", SqlDbType.DateTime).Value = trform1gdr.JADWAL_PRODUKSI_CETAK;
+                    command.Parameters.Add("@JADWAL_KIRIM", SqlDbType.DateTime).Value = trform1gdr.JADWAL_KIRIM;
+                    command.Parameters.Add("@JADWAL_FOTO", SqlDbType.DateTime).Value = trform1gdr.JADWAL_FOTO;
+                    command.Parameters.Add("@JADWAL_DI", SqlDbType.DateTime).Value = trform1gdr.JADWAL_DI;
+                    command.Parameters.Add("@JADWAL_ADM_CREATIVE", SqlDbType.DateTime).Value = trform1gdr.JADWAL_ADM_CREATIVE;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_1;
+                    command.Parameters.Add("@TGL_DITERIMA_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_1;
+                    command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
 
                     command.ExecuteScalar();
                 }
@@ -304,6 +516,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -316,7 +529,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2 WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -325,14 +538,17 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
                     command.Parameters.Add("@TGL_DITERIMA_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_2;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -345,7 +561,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_3 = @DITERIMA_3, TGL_DITERIMA_3 = @TGL_DITERIMA_3 WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_3 = @DITERIMA_3, TGL_DITERIMA_3 = @TGL_DITERIMA_3, STATUS_VER = @STATUS_VER, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -354,14 +570,18 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
                     command.Parameters.Add("@DITERIMA_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_3;
                     command.Parameters.Add("@TGL_DITERIMA_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_3;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@STATUS_VER", SqlDbType.VarChar).Value = trform1gdr.STATUS_VER;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
             }
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -374,7 +594,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI1 = @MENYETUJUI1, TGL_MENYETUJUI1 = @TGL_MENYETUJUI1, REVISI = @REVISI WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI1 = @MENYETUJUI1, TGL_MENYETUJUI1 = @TGL_MENYETUJUI1, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -384,8 +604,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@MENYETUJUI1", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI1;
                     command.Parameters.Add("@TGL_MENYETUJUI1", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI1;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -393,6 +615,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -405,7 +628,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI2 = @MENYETUJUI2, TGL_MENYETUJUI2 = @TGL_MENYETUJUI2, REVISI = @REVISI WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI2 = @MENYETUJUI2, TGL_MENYETUJUI2 = @TGL_MENYETUJUI2, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -415,8 +638,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@MENYETUJUI2", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI2;
                     command.Parameters.Add("@TGL_MENYETUJUI2", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI2;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -424,6 +649,41 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateRevisiMenyetujui3(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, MENYETUJUI3 = @MENYETUJUI3, TGL_MENYETUJUI3 = @TGL_MENYETUJUI3, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@MENYETUJUI3", SqlDbType.VarChar).Value = trform1gdr.MENYETUJUI3;
+                    command.Parameters.Add("@TGL_MENYETUJUI3", SqlDbType.DateTime).Value = trform1gdr.TGL_MENYETUJUI3;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -436,7 +696,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_1 = @DITERIMA_1, TGL_DITERIMA_1 = @TGL_DITERIMA_1, REVISI = @REVISI WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_1 = @DITERIMA_1, TGL_DITERIMA_1 = @TGL_DITERIMA_1, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -446,8 +706,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@DITERIMA_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_1;
                     command.Parameters.Add("@TGL_DITERIMA_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_1;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -455,6 +717,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -467,7 +730,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2, REVISI = @REVISI WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_2 = @DITERIMA_2, TGL_DITERIMA_2 = @TGL_DITERIMA_2, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -477,8 +740,10 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@DITERIMA_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_2;
                     command.Parameters.Add("@TGL_DITERIMA_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_2;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -486,6 +751,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -498,7 +764,7 @@ namespace WebDelamiFormRequest.DataLayer
             string newId = "Berhasil";
             try
             {
-                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_3 = @DITERIMA_3, TGL_DITERIMA_3 = @TGL_DITERIMA_3, REVISI = @REVISI WHERE NO_FORM = @NO_FORM ");
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_3 = @DITERIMA_3, TGL_DITERIMA_3 = @TGL_DITERIMA_3, REVISI = @REVISI, STATUS_VER = @STATUS_VER, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
                 CnString.Open();
 
                 using (SqlCommand command = new SqlCommand(query, CnString))
@@ -508,8 +774,11 @@ namespace WebDelamiFormRequest.DataLayer
                     command.Parameters.Add("@DITERIMA_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_3;
                     command.Parameters.Add("@TGL_DITERIMA_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_3;
                     command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
-                    command.ExecuteScalar();
-
+                    command.Parameters.Add("@STATUS_VER", SqlDbType.VarChar).Value = trform1gdr.STATUS_VER;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value =  trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value =  trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value =  trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value =  trform1gdr.URUTAN_NEXT_USER;
                     command.ExecuteScalar();
                 }
 
@@ -517,6 +786,420 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        //Update User Photographer
+        public void UpdateDiterimaLain1(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_1 = @DITERIMA_LAIN_1, TGL_DITERIMA_LAIN_1 = @TGL_DITERIMA_LAIN_1, RFR_LAMPIRAN1_PG = @RFR_LAMPIRAN1_PG, RFR_LAMPIRAN2_PG = @RFR_LAMPIRAN2_PG, RFR_LAMPIRAN3_PG = @RFR_LAMPIRAN3_PG, RFR_LAMPIRAN4_PG = @RFR_LAMPIRAN4_PG, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_1;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_1;
+                    command.Parameters.Add("@RFR_LAMPIRAN1_PG", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN1_PG;
+                    command.Parameters.Add("@RFR_LAMPIRAN2_PG", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN2_PG;
+                    command.Parameters.Add("@RFR_LAMPIRAN3_PG", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN3_PG;
+                    command.Parameters.Add("@RFR_LAMPIRAN4_PG", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN4_PG;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateDiterimaLain2(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_2 = @DITERIMA_LAIN_2, TGL_DITERIMA_LAIN_2 = @TGL_DITERIMA_LAIN_2, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_2;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_2;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateRevisiDiterimaLain1(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_1 = @DITERIMA_LAIN_1, TGL_DITERIMA_LAIN_1 = @TGL_DITERIMA_LAIN_1, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_1;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_1;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateRevisiDiterimaLain2(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_2 = @DITERIMA_LAIN_2, TGL_DITERIMA_LAIN_2 = @TGL_DITERIMA_LAIN_2, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_2", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_2;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_2", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_2;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateCancelDiterimaLain1(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_1 = @DITERIMA_LAIN_1, TGL_DITERIMA_LAIN_1 = @TGL_DITERIMA_LAIN_1, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_1", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_1;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_1", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_1;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        //Update Digital Imaging
+
+        public void UpdateDiterimaLain3(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_3 = @DITERIMA_LAIN_3, TGL_DITERIMA_LAIN_3 = @TGL_DITERIMA_LAIN_3, RFR_LAMPIRAN1_DI = @RFR_LAMPIRAN1_DI, RFR_LAMPIRAN2_DI = @RFR_LAMPIRAN2_DI, RFR_LAMPIRAN3_DI = @RFR_LAMPIRAN3_DI, RFR_LAMPIRAN4_DI = @RFR_LAMPIRAN4_DI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_3;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_3;
+                    command.Parameters.Add("@RFR_LAMPIRAN1_DI", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN1_DI;
+                    command.Parameters.Add("@RFR_LAMPIRAN2_DI", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN2_DI;
+                    command.Parameters.Add("@RFR_LAMPIRAN3_DI", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN3_DI;
+                    command.Parameters.Add("@RFR_LAMPIRAN4_DI", SqlDbType.VarChar).Value = trform1gdr.RFR_LAMPIRAN4_DI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateDiterimaLain4(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_4 = @DITERIMA_LAIN_4, TGL_DITERIMA_LAIN_4 = @TGL_DITERIMA_LAIN_4, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_4", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_4;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_4", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_4;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateRevisiDiterimaLain3(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_3 = @DITERIMA_LAIN_3, TGL_DITERIMA_LAIN_3 = @TGL_DITERIMA_LAIN_3, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_3;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_3;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateRevisiDiterimaLain4(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_4 = @DITERIMA_LAIN_4, TGL_DITERIMA_LAIN_4 = @TGL_DITERIMA_LAIN_4, REVISI = @REVISI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_4", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_4;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_4", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_4;
+                    command.Parameters.Add("@REVISI", SqlDbType.VarChar).Value = trform1gdr.REVISI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateCancelDiterimaLain3(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_3 = @DITERIMA_LAIN_3, TGL_DITERIMA_LAIN_3 = @TGL_DITERIMA_LAIN_3, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_3", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_3;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_3", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_3;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+
+        //Update Production
+        public void UpdateDiterimaLain5Materi(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_5_MATERI = @DITERIMA_LAIN_5_MATERI, TGL_DITERIMA_LAIN_5_MATERI = @TGL_DITERIMA_LAIN_5_MATERI, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_5_MATERI", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_5_MATERI;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_5_MATERI", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_5_MATERI;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
+            }
+            finally
+            {
+                CnString.Close();
+            }
+        }
+
+        public void UpdateDiterimaLain5(TR_FORM1_GDR trform1gdr)
+        {
+            string newId = "Berhasil";
+            try
+            {
+                string query = String.Format("UPDATE TR_FORM1_GDR SET STATUS = @STATUS, DITERIMA_LAIN_5 = @DITERIMA_LAIN_5, TGL_DITERIMA_LAIN_5 = @TGL_DITERIMA_LAIN_5, USER_CURRENT = @USER_CURRENT, NEXT_USER = @NEXT_USER, URUTAN_USER_CURRENT = @URUTAN_USER_CURRENT, URUTAN_NEXT_USER = @URUTAN_NEXT_USER WHERE NO_FORM = @NO_FORM ");
+                CnString.Open();
+
+                using (SqlCommand command = new SqlCommand(query, CnString))
+                {
+                    command.Parameters.Add("@NO_FORM", SqlDbType.VarChar).Value = trform1gdr.NO_FORM;
+                    command.Parameters.Add("@STATUS", SqlDbType.VarChar).Value = trform1gdr.STATUS;
+                    command.Parameters.Add("@DITERIMA_LAIN_5", SqlDbType.VarChar).Value = trform1gdr.DITERIMA_LAIN_5;
+                    command.Parameters.Add("@TGL_DITERIMA_LAIN_5", SqlDbType.DateTime).Value = trform1gdr.TGL_DITERIMA_LAIN_5;
+                    command.Parameters.Add("@USER_CURRENT", SqlDbType.VarChar).Value = trform1gdr.USER_CURRENT;
+                    command.Parameters.Add("@NEXT_USER", SqlDbType.VarChar).Value = trform1gdr.NEXT_USER;
+                    command.Parameters.Add("@URUTAN_USER_CURRENT", SqlDbType.Int).Value = trform1gdr.URUTAN_USER_CURRENT;
+                    command.Parameters.Add("@URUTAN_NEXT_USER", SqlDbType.Int).Value = trform1gdr.URUTAN_NEXT_USER;
+                    command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -545,6 +1228,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
@@ -571,6 +1255,7 @@ namespace WebDelamiFormRequest.DataLayer
             catch (Exception ex)
             {
                 newId = "ERROR: " + ex.Message;
+                throw ex;
             }
             finally
             {
