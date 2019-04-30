@@ -205,6 +205,21 @@
             </SelectParameters>
         </asp:SqlDataSource>
 
+         <asp:SqlDataSource ID="C_GridDashPDC_VM" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+            SelectCommand="select * from tf_DashGdrPDC_VM(@Username) Order by Last_Activity">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="HfUsername" Name="Username" PropertyName="Value" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+        
+         <asp:SqlDataSource ID="C_GridDashPDC_Others" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+            SelectCommand="select * from tf_DashGdrPDC_Others(@Username) Order by Last_Activity">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="HfUsername" Name="Username" PropertyName="Value" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
 
 
         <asp:SqlDataSource ID="C_GridDashHeadDesigner" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"

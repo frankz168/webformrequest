@@ -1,0 +1,6 @@
+Revisi New
+1. Dashboard date create form diganti tnggal Required.(Ok)
+2. textbox jadwal acara buka toko dan pergantian image muncul ketika user memilih jenis toko baru. (Ok)
+3. Report ditambahkan menu view All untuk melihat semua form.(Ok)
+4. Form yang pemilihan kode cust dibuat pake filter.
+5. di menu dashboard tidak muncul datanya. kalau belum sampe ke tangan usernya. (Ok)

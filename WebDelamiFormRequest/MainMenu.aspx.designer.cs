@@ -157,6 +157,24 @@ namespace WebDelamiFormRequest {
         protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashPDC;
         
         /// <summary>
+        /// C_GridDashPDC_VM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashPDC_VM;
+        
+        /// <summary>
+        /// C_GridDashPDC_Others control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource C_GridDashPDC_Others;
+        
+        /// <summary>
         /// C_GridDashHeadDesigner control.
         /// </summary>
         /// <remarks>

@@ -3120,7 +3120,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TrForm3gdr.REFERENSI_DESIGN = REFERENSI_DESIGN;
 
 
-                if (linkbtn_filename1.Text == "-")
+                if (linkbtn_filename1.Text == "-" || linkbtn_filename1.Text == "")
                 {
                     if (btn_uploadfile1.HasFile)
                     {
@@ -3163,7 +3163,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 TrForm3gdr.RFR_LAMPIRAN1 = RFR_LAMPIRAN1;
 
-                if (linkbtn_filename2.Text == "-")
+                if (linkbtn_filename2.Text == "-" || linkbtn_filename2.Text == "")
                 {
                     if (btn_uploadfile2.HasFile)
                     {
@@ -3198,7 +3198,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 TrForm3gdr.RFR_LAMPIRAN2 = RFR_LAMPIRAN2;
 
-                if (linkbtn_filename3.Text == "-")
+                if (linkbtn_filename3.Text == "-" || linkbtn_filename3.Text == "")
                 {
                     if (btn_uploadfile3.HasFile)
                     {
@@ -3231,7 +3231,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 TrForm3gdr.RFR_LAMPIRAN3 = RFR_LAMPIRAN3;
 
-                if (linkbtn_filename4.Text == "-")
+                if (linkbtn_filename4.Text == "-" || linkbtn_filename4.Text == "")
                 {
                     if (btn_uploadfile4.HasFile)
                     {
@@ -3278,7 +3278,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 string RFR_LAMPIRAN7GD = "";
                 string RFR_LAMPIRAN8GD = "";
 
-                if (linkbtn_filenamegd1.Text == "-")
+                if (linkbtn_filenamegd1.Text == "-" || linkbtn_filenamegd1.Text == "")
                 {
                     if (btn_uploadfilegd1.HasFile)
                     {
@@ -3318,7 +3318,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TrForm3gdr.RFR_LAMPIRAN5_GD = RFR_LAMPIRAN5GD;
 
 
-                if (linkbtn_filenamegd2.Text == "-")
+                if (linkbtn_filenamegd2.Text == "-" || linkbtn_filenamegd2.Text == "")
                 {
 
                     if (btn_uploadfilegd2.HasFile)
@@ -3358,7 +3358,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TrForm3gdr.RFR_LAMPIRAN6_GD = RFR_LAMPIRAN6GD;
 
 
-                if (linkbtn_filenamegd3.Text == "-")
+                if (linkbtn_filenamegd3.Text == "-" || linkbtn_filenamegd3.Text == "")
                 {
 
                     if (btn_uploadfilegd3.HasFile)
@@ -3398,7 +3398,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TrForm3gdr.RFR_LAMPIRAN7_GD = RFR_LAMPIRAN7GD;
 
 
-                if (linkbtn_filenamegd4.Text == "-")
+                if (linkbtn_filenamegd4.Text == "-" || linkbtn_filenamegd4.Text == "")
                 {
 
                     if (btn_uploadfilegd4.HasFile)
@@ -5096,7 +5096,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform3gdr.STATUS = EApprovalStatus.ApprovedPhoto;
 
                 //Upload File Photographer
-                if (linkbtn_filenamepg1.Text == "-")
+                if (linkbtn_filenamepg1.Text == "-" || linkbtn_filenamepg1.Text == "")
                 {
                     if (btn_uploadfilepg1.HasFile)
                     {
@@ -5139,7 +5139,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 trform3gdr.RFR_LAMPIRAN1_PG = RFR_LAMPIRAN1_PG;
 
-                if (linkbtn_filenamepg2.Text == "-")
+                if (linkbtn_filenamepg2.Text == "-" || linkbtn_filenamepg2.Text == "")
                 {
                     if (btn_uploadfilepg2.HasFile)
                     {
@@ -5174,7 +5174,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform3gdr.RFR_LAMPIRAN2_PG = RFR_LAMPIRAN2_PG;
 
 
-                if (linkbtn_filenamepg3.Text == "-")
+                if (linkbtn_filenamepg3.Text == "-" || linkbtn_filenamepg3.Text == "")
                 {
                     if (btn_uploadfilepg3.HasFile)
                     {
@@ -5208,7 +5208,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform3gdr.RFR_LAMPIRAN3_PG = RFR_LAMPIRAN3_PG;
 
 
-                if (linkbtn_filenamepg4.Text == "-")
+                if (linkbtn_filenamepg4.Text == "-" || linkbtn_filenamepg4.Text == "")
                 {
                     if (btn_uploadfilepg4.HasFile)
                     {
@@ -5604,7 +5604,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 trform3gdr.STATUS = EApprovalStatus.ApprovedDI;
 
                 //Upload File Digital Imaging
-                if (linkbtn_filenamedi1.Text == "-")
+                if (linkbtn_filenamedi1.Text == "-" || linkbtn_filenamedi1.Text == "")
                 {
                     if (btn_uploadfiledi1.HasFile)
                     {
@@ -5647,7 +5647,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 trform3gdr.RFR_LAMPIRAN1_DI = RFR_LAMPIRAN1_DI;
 
-                if (linkbtn_filenamepg2.Text == "-")
+                if (linkbtn_filenamedi2.Text == "-" || linkbtn_filenamedi2.Text == "")
                 {
                     if (btn_uploadfiledi2.HasFile)
                     {
@@ -5682,7 +5682,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 trform3gdr.RFR_LAMPIRAN2_DI = RFR_LAMPIRAN2_DI;
 
-                if (linkbtn_filenamepg3.Text == "-")
+                if (linkbtn_filenamedi3.Text == "-" || linkbtn_filenamedi3.Text == "")
                 {
                     if (btn_uploadfiledi3.HasFile)
                     {
@@ -5717,7 +5717,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 trform3gdr.RFR_LAMPIRAN3_DI = RFR_LAMPIRAN3_DI;
 
-                if (linkbtn_filenamedi4.Text == "-")
+                if (linkbtn_filenamedi4.Text == "-" || linkbtn_filenamedi4.Text == "")
                 {
                     if (btn_uploadfiledi4.HasFile)
                     {

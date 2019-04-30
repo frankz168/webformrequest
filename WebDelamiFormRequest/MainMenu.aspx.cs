@@ -200,7 +200,19 @@ namespace WebDelamiFormRequest
                             gvMain.DataSourceID = "C_GridDashCreativeManagerOthers";
                             break;
                         case "PDC":
-                            gvMain.DataSourceID = "C_GridDashPDC";
+                            if (HfUsername.Value == "PDC.VM")
+                            {
+                                gvMain.DataSourceID = "C_GridDashPDC_VM";
+                            }
+                            else if (HfUsername.Value == "PDC.OTHERS")
+                            {
+                                gvMain.DataSourceID = "C_GridDashPDC_OTHERS";
+                            }
+                            else
+                            {
+                                gvMain.DataSourceID = "C_GridDashPDC";
+                            }
+
                             break;
                         default:
                             Console.WriteLine("Daftar Report Status");
