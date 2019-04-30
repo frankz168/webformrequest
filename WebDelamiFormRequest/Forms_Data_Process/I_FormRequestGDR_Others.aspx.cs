@@ -887,7 +887,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                     string ext = System.IO.Path.GetExtension(this.btn_uploadfilestore.PostedFile.FileName).ToLower();
 
-                    if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg" || ext != ".pdf")
+                    if (ext != ".xls" && ext != ".xlsx")
                     {
                         DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.xlsx)";
                         DivMessage.Attributes["class"] = "error";
@@ -1051,7 +1051,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                     string ext = System.IO.Path.GetExtension(this.btn_uploadfilematerial.PostedFile.FileName).ToLower();
 
-                    if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg" || ext != ".pdf")
+                    if (ext != ".xls" && ext != ".xlsx")
                     {
                         DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.xlsx)";
                         DivMessage.Attributes["class"] = "error";
@@ -2719,7 +2719,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     TrForm3gdr.RFR_LAMPIRAN_STORE = RFR_LAMPIRAN_STORE;
                     TrForm3gdr.RFR_LAMPIRAN_MATERIAL = RFR_LAMPIRAN_MATERIAL;
 
-                    if (linkbtn_filename1.Text == "-")
+                    if (linkbtn_filename1.Text == "-" && linkbtn_filename1.Text == "")
                     {
                         if (btn_uploadfile1.HasFile)
                         {
@@ -2757,12 +2757,49 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        RFR_LAMPIRAN1 = linkbtn_filename1.Text;
+                        if (btn_uploadfile1.HasFile)
+                        {
+                            int imgSize = btn_uploadfile1.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile1.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile1.PostedFile != null && btn_uploadfile1.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile1.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 1 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    RFR_LAMPIRAN1 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "1" + btn_uploadfile1.FileName;
+                                    btn_uploadfile1.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN1);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            RFR_LAMPIRAN1 = linkbtn_filename1.Text;
+
+                        }
                     }
 
                     TrForm3gdr.RFR_LAMPIRAN1 = RFR_LAMPIRAN1;
 
-                    if (linkbtn_filename2.Text == "-")
+                    if (linkbtn_filename2.Text == "-" && linkbtn_filename2.Text == "")
                     {
                         if (btn_uploadfile2.HasFile)
                         {
@@ -2792,12 +2829,40 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        RFR_LAMPIRAN2 = linkbtn_filename2.Text;
+                        if (btn_uploadfile2.HasFile)
+                        {
+                            int imgSize = btn_uploadfile2.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile2.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile2.PostedFile != null && btn_uploadfile2.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile2.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 2 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                else
+                                {
+                                    RFR_LAMPIRAN2 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "2" + btn_uploadfile2.FileName;
+                                    btn_uploadfile2.PostedFile
+                                        .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN2);
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            RFR_LAMPIRAN2 = linkbtn_filename2.Text;
+                        }
                     }
 
                     TrForm3gdr.RFR_LAMPIRAN2 = RFR_LAMPIRAN2;
 
-                    if (linkbtn_filename3.Text == "-")
+                    if (linkbtn_filename3.Text == "-" && linkbtn_filename3.Text == "")
                     {
                         if (btn_uploadfile3.HasFile)
                         {
@@ -2826,11 +2891,38 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        RFR_LAMPIRAN3 = linkbtn_filename3.Text;
+                        if (btn_uploadfile3.HasFile)
+                        {
+                            int imgSize = btn_uploadfile3.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile3.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile3.PostedFile != null && btn_uploadfile3.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile3.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 3 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                else
+                                {
+                                    RFR_LAMPIRAN3 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "3" + btn_uploadfile3.FileName;
+                                    btn_uploadfile3.PostedFile
+                                        .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN3);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            RFR_LAMPIRAN3 = linkbtn_filename3.Text;
+                        }
                     }
                     TrForm3gdr.RFR_LAMPIRAN3 = RFR_LAMPIRAN3;
 
-                    if (linkbtn_filename4.Text == "-")
+                    if (linkbtn_filename4.Text == "-" && linkbtn_filename4.Text == "")
                     {
                         if (btn_uploadfile4.HasFile)
                         {
@@ -2860,7 +2952,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        RFR_LAMPIRAN4 = linkbtn_filename4.Text;
+                        if (btn_uploadfile4.HasFile)
+                        {
+                            int imgSize = btn_uploadfile4.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile4.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile4.PostedFile != null && btn_uploadfile4.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile4.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 4 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                else
+                                {
+                                    RFR_LAMPIRAN4 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "4" + btn_uploadfile4.FileName;
+                                    btn_uploadfile4.PostedFile
+                                        .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN4);
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            RFR_LAMPIRAN4 = linkbtn_filename4.Text;
+                        }
                     }
                     TrForm3gdr.RFR_LAMPIRAN4 = RFR_LAMPIRAN4;
                     TrForm3gdr.JADWAL_SELESAI_DESAIN = Convert.ToDateTime(JADWAL_SELESAI_DESAIN);
@@ -3158,7 +3278,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN1 = linkbtn_filename1.Text;
+                    if (btn_uploadfile1.HasFile)
+                    {
+                        int imgSize = btn_uploadfile1.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfile1.PostedFile.FileName).ToLower();
+                        if (btn_uploadfile1.PostedFile != null && btn_uploadfile1.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfile1.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 1 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                            //{
+                            //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                            //    DivMessage.Attributes["class"] = "error";
+                            //    //DivMessage.Attributes["class"] = "success";
+                            //    DivMessage.Visible = true;
+                            //    return;
+                            //}
+
+                            else
+                            {
+                                RFR_LAMPIRAN1 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "1" + btn_uploadfile1.FileName;
+                                btn_uploadfile1.PostedFile
+              .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN1);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN1 = linkbtn_filename1.Text;
+                    }
                 }
 
                 TrForm3gdr.RFR_LAMPIRAN1 = RFR_LAMPIRAN1;
@@ -3193,7 +3349,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN2 = linkbtn_filename2.Text;
+                    if (btn_uploadfile2.HasFile)
+                    {
+                        int imgSize = btn_uploadfile2.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfile2.PostedFile.FileName).ToLower();
+                        if (btn_uploadfile2.PostedFile != null && btn_uploadfile2.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfile2.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 2 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN2 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "2" + btn_uploadfile2.FileName;
+                                btn_uploadfile2.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN2);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN2 = linkbtn_filename2.Text;
+                    }
                 }
 
                 TrForm3gdr.RFR_LAMPIRAN2 = RFR_LAMPIRAN2;
@@ -3227,7 +3411,34 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN3 = linkbtn_filename3.Text;
+                    if (btn_uploadfile3.HasFile)
+                    {
+                        int imgSize = btn_uploadfile3.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfile3.PostedFile.FileName).ToLower();
+                        if (btn_uploadfile3.PostedFile != null && btn_uploadfile3.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfile3.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 3 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN3 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "3" + btn_uploadfile3.FileName;
+                                btn_uploadfile3.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN3);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN3 = linkbtn_filename3.Text;
+                    }
                 }
                 TrForm3gdr.RFR_LAMPIRAN3 = RFR_LAMPIRAN3;
 
@@ -3261,7 +3472,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN4 = linkbtn_filename4.Text;
+                    if (btn_uploadfile4.HasFile)
+                    {
+                        int imgSize = btn_uploadfile4.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfile4.PostedFile.FileName).ToLower();
+                        if (btn_uploadfile4.PostedFile != null && btn_uploadfile4.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfile4.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 4 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN4 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "4" + btn_uploadfile4.FileName;
+                                btn_uploadfile4.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUpload/") + RFR_LAMPIRAN4);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN4 = linkbtn_filename4.Text;
+                    }
                 }
                 TrForm3gdr.RFR_LAMPIRAN4 = RFR_LAMPIRAN4;
                 TrForm3gdr.JADWAL_SELESAI_DESAIN = Convert.ToDateTime(JADWAL_SELESAI_DESAIN);
@@ -3304,15 +3543,39 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             }
 
                         }
-                        else
-                        {
-                            RFR_LAMPIRAN5GD = linkbtn_filenamegd1.Text;
-                        }
                     }
                 }
                 else
                 {
-                    RFR_LAMPIRAN5GD = linkbtn_filenamegd1.Text;
+                    if (btn_uploadfilegd1.HasFile)
+                    {
+                        int imgSize = btn_uploadfilegd1.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilegd1.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilegd1.PostedFile != null && btn_uploadfilegd1.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilegd1.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 1 Gd is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN5GD = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfilegd1.FileName;
+                                btn_uploadfilegd1.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN5GD);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN5GD = linkbtn_filenamegd1.Text;
+                    }
                 }
 
                 TrForm3gdr.RFR_LAMPIRAN5_GD = RFR_LAMPIRAN5GD;
@@ -3344,15 +3607,40 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                                     .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN6GD);
                             }
                         }
-                        else
-                        {
-                            RFR_LAMPIRAN6GD = linkbtn_filenamegd2.Text;
-                        }
+                     
                     }
                 }
                 else
                 {
-                    RFR_LAMPIRAN6GD = linkbtn_filenamegd2.Text;
+                    if (btn_uploadfilegd2.HasFile)
+                    {
+                        int imgSize = btn_uploadfilegd2.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilegd2.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilegd2.PostedFile != null && btn_uploadfilegd2.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilegd2.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 2 Gd is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN6GD = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfilegd2.FileName;
+                                btn_uploadfilegd2.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN6GD);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN6GD = linkbtn_filenamegd2.Text;
+                    }
                 }
 
                 TrForm3gdr.RFR_LAMPIRAN6_GD = RFR_LAMPIRAN6GD;
@@ -3384,15 +3672,40 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                                     .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN7GD);
                             }
                         }
-                        else
-                        {
-                            RFR_LAMPIRAN7GD = linkbtn_filenamegd3.Text;
-                        }
+                     
                     }
                 }
                 else
                 {
-                    RFR_LAMPIRAN7GD = linkbtn_filenamegd3.Text;
+                    if (btn_uploadfilegd3.HasFile)
+                    {
+                        int imgSize = btn_uploadfilegd3.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilegd3.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilegd3.PostedFile != null && btn_uploadfilegd3.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilegd3.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 3 Gd is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN7GD = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfilegd3.FileName;
+                                btn_uploadfilegd3.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN7GD);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN7GD = linkbtn_filenamegd3.Text;
+                    }
                 }
 
                 TrForm3gdr.RFR_LAMPIRAN7_GD = RFR_LAMPIRAN7GD;
@@ -3425,15 +3738,41 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                                     .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN8GD);
                             }
                         }
-                        else
-                        {
-                            RFR_LAMPIRAN8GD = linkbtn_filenamegd4.Text;
-                        }
+                       
                     }
                 }
                 else
                 {
-                    RFR_LAMPIRAN8GD = linkbtn_filenamegd4.Text;
+                    if (btn_uploadfilegd4.HasFile)
+                    {
+                        int imgSize = btn_uploadfilegd4.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilegd4.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilegd4.PostedFile != null && btn_uploadfilegd4.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilegd4.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 4 Gd is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+
+                                RFR_LAMPIRAN8GD = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfilegd4.FileName;
+                                btn_uploadfilegd4.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN8GD);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN8GD = linkbtn_filenamegd4.Text;
+                    }
                 }
 
                 TrForm3gdr.RFR_LAMPIRAN8_GD = RFR_LAMPIRAN8GD;
@@ -4157,7 +4496,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else if (URUTAN == 3)
                     {
-                        //
+                       
 
                     }
                     else if (URUTAN == 4)
@@ -4168,7 +4507,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else if (URUTAN == 5)
                     {
-                        //
+                        
 
                     }
                     else if (URUTAN == 6)
@@ -5134,7 +5473,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN1_PG = linkbtn_filenamepg1.Text;
+                    if (btn_uploadfilepg1.HasFile)
+                    {
+                        int imgSize = btn_uploadfilepg1.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilepg1.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilepg1.PostedFile != null && btn_uploadfilepg1.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilepg1.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 1 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                            //{
+                            //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                            //    DivMessage.Attributes["class"] = "error";
+                            //    //DivMessage.Attributes["class"] = "success";
+                            //    DivMessage.Visible = true;
+                            //    return;
+                            //}
+
+                            else
+                            {
+                                RFR_LAMPIRAN1_PG = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfile1.FileName;
+                                btn_uploadfilepg1.PostedFile
+              .SaveAs(Server.MapPath("~/Uploaded/FileUploadPG/") + RFR_LAMPIRAN1_PG);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN1_PG = linkbtn_filenamepg1.Text;
+                    }
                 }
 
                 trform3gdr.RFR_LAMPIRAN1_PG = RFR_LAMPIRAN1_PG;
@@ -5169,7 +5544,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN2_PG = linkbtn_filenamepg2.Text;
+                    if (btn_uploadfilepg2.HasFile)
+                    {
+                        int imgSize = btn_uploadfilepg2.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilepg2.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilepg2.PostedFile != null && btn_uploadfilepg2.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilepg2.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 2 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN2_PG = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfile2.FileName;
+                                btn_uploadfilepg2.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadPG/") + RFR_LAMPIRAN2_PG);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN2_PG = linkbtn_filenamepg2.Text;
+                    }
                 }
                 trform3gdr.RFR_LAMPIRAN2_PG = RFR_LAMPIRAN2_PG;
 
@@ -5203,7 +5606,34 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN3_PG = linkbtn_filenamepg3.Text;
+                    if (btn_uploadfilepg3.HasFile)
+                    {
+                        int imgSize = btn_uploadfilepg3.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilepg3.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilepg3.PostedFile != null && btn_uploadfilepg3.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilepg3.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 3 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN3_PG = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfile3.FileName;
+                                btn_uploadfilepg3.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadPG/") + RFR_LAMPIRAN3_PG);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN3_PG = linkbtn_filenamepg3.Text;
+                    }
                 }
                 trform3gdr.RFR_LAMPIRAN3_PG = RFR_LAMPIRAN3_PG;
 
@@ -5238,7 +5668,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN4_PG = linkbtn_filenamepg4.Text;
+                    if (btn_uploadfilepg4.HasFile)
+                    {
+                        int imgSize = btn_uploadfilepg4.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfilepg4.PostedFile.FileName).ToLower();
+                        if (btn_uploadfilepg4.PostedFile != null && btn_uploadfilepg4.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfilepg4.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 4 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN4_PG = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfile4.FileName;
+                                btn_uploadfilepg4.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadPG/") + RFR_LAMPIRAN4_PG);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN4_PG = linkbtn_filenamepg4.Text;
+                    }
                 }
                 trform3gdr.RFR_LAMPIRAN4_PG = RFR_LAMPIRAN4_PG;
 
@@ -5642,7 +6100,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN1_DI = linkbtn_filenamedi1.Text;
+                    if (btn_uploadfiledi1.HasFile)
+                    {
+                        int imgSize = btn_uploadfiledi1.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfiledi1.PostedFile.FileName).ToLower();
+                        if (btn_uploadfiledi1.PostedFile != null && btn_uploadfiledi1.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfiledi1.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 1 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                            //{
+                            //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                            //    DivMessage.Attributes["class"] = "error";
+                            //    //DivMessage.Attributes["class"] = "success";
+                            //    DivMessage.Visible = true;
+                            //    return;
+                            //}
+
+                            else
+                            {
+                                RFR_LAMPIRAN1_DI = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfiledi1.FileName;
+                                btn_uploadfiledi1.PostedFile
+              .SaveAs(Server.MapPath("~/Uploaded/FileUploadDI/") + RFR_LAMPIRAN1_DI);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN1_DI = linkbtn_filenamedi1.Text;
+                    }
                 }
 
                 trform3gdr.RFR_LAMPIRAN1_DI = RFR_LAMPIRAN1_DI;
@@ -5677,7 +6171,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN2_DI = linkbtn_filenamedi2.Text;
+                    if (btn_uploadfiledi2.HasFile)
+                    {
+                        int imgSize = btn_uploadfiledi2.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfiledi2.PostedFile.FileName).ToLower();
+                        if (btn_uploadfiledi2.PostedFile != null && btn_uploadfiledi2.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfiledi2.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 2 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN2_DI = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfiledi2.FileName;
+                                btn_uploadfiledi2.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadDI/") + RFR_LAMPIRAN2_DI);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN2_DI = linkbtn_filenamedi2.Text;
+                    }
                 }
 
                 trform3gdr.RFR_LAMPIRAN2_DI = RFR_LAMPIRAN2_DI;
@@ -5712,7 +6234,34 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 else
                 {
-                    RFR_LAMPIRAN3_DI = linkbtn_filenamedi3.Text;
+                    if (btn_uploadfiledi3.HasFile)
+                    {
+                        int imgSize = btn_uploadfiledi3.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfiledi3.PostedFile.FileName).ToLower();
+                        if (btn_uploadfiledi3.PostedFile != null && btn_uploadfiledi3.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfiledi3.PostedFile.ContentLength > 3000000)
+                            {
+                                DivMessage.InnerText = "File 3 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN3_DI = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfiledi3.FileName;
+                                btn_uploadfiledi3.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadDI/") + RFR_LAMPIRAN3_DI);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN3_DI = linkbtn_filenamedi3.Text;
+                    }
                 }
 
                 trform3gdr.RFR_LAMPIRAN3_DI = RFR_LAMPIRAN3_DI;
@@ -5747,7 +6296,35 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 else
                 {
-                    RFR_LAMPIRAN4_DI = linkbtn_filenamedi4.Text;
+                    if (btn_uploadfiledi4.HasFile)
+                    {
+                        int imgSize = btn_uploadfiledi4.PostedFile.ContentLength;
+                        string ext = System.IO.Path.GetExtension(this.btn_uploadfiledi4.PostedFile.FileName).ToLower();
+                        if (btn_uploadfiledi4.PostedFile != null && btn_uploadfiledi4.PostedFile.FileName != "")
+                        {
+
+
+                            if (btn_uploadfiledi4.PostedFile.ContentLength > 4000000)
+                            {
+                                DivMessage.InnerText = "File 4 is larger than 3MB.";
+                                DivMessage.Attributes["class"] = "error";
+                                //DivMessage.Attributes["class"] = "success";
+                                DivMessage.Visible = true;
+                                return;
+                            }
+                            else
+                            {
+                                RFR_LAMPIRAN4_DI = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + btn_uploadfiledi4.FileName;
+                                btn_uploadfiledi4.PostedFile
+                                    .SaveAs(Server.MapPath("~/Uploaded/FileUploadDI/") + RFR_LAMPIRAN4_DI);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        RFR_LAMPIRAN4_DI = linkbtn_filenamedi4.Text;
+                    }
                 }
                 trform3gdr.RFR_LAMPIRAN4_DI = RFR_LAMPIRAN4_DI;
 
@@ -7532,7 +8109,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
             Pnl_UploadFilePG.Visible = true;
             Pnl_UploadFilePG.Enabled = true;
             Pnl_Commentar.Visible = true;
-            btn_ToRevise.Visible = true;
+            btn_ToRevise.Visible = false;
             btn_Reject.Visible = true;
         }
 
@@ -7563,7 +8140,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
             Pnl_UploadFileDI.Visible = true;
             Pnl_UploadFileDI.Enabled = true;
             Pnl_Commentar.Visible = true;
-            btn_ToRevise.Visible = true;
+            btn_ToRevise.Visible = false;
             btn_Reject.Visible = true;
         }
 

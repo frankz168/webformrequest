@@ -204,7 +204,7 @@ namespace WebDelamiFormRequest
                             {
                                 gvMain.DataSourceID = "C_GridDashPDC_VM";
                             }
-                            else if (HfUsername.Value == "PDC.OTHERS")
+                            else if (HfUsername.Value == "PDC.MARKOM")
                             {
                                 gvMain.DataSourceID = "C_GridDashPDC_OTHERS";
                             }

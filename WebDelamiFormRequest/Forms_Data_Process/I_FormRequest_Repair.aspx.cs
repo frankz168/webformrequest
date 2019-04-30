@@ -1615,7 +1615,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             TrForm5Repair.REQUEST_FOR = REQUEST_FOR;
                             trform5repairda.UpdateBudget(TrForm5Repair);
 
-                            //SaveDetailPermintaanPerbaikan();
+                            SaveDetailPermintaanPerbaikan();
 
                             TR_FORM_GDR_ACTIVITY_DA trformgdrActivityDa = new DataLayer.TR_FORM_GDR_ACTIVITY_DA();
                             DataSet DsFormActivity = new DataSet();
@@ -7303,7 +7303,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_1 = linkbtn_filename1.Text;
+                        if (btn_uploadfile1.HasFile)
+                        {
+                            int imgSize = btn_uploadfile1.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile1.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile1.PostedFile != null && btn_uploadfile1.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile1.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 1 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_1 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "1" + btn_uploadfile1.FileName;
+                                    btn_uploadfile1.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_1);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_1 = linkbtn_filename1.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_1;
@@ -7321,7 +7357,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     trform5repairpermintaan.ACTUAL_FINISH_DATE = startdate;
                     trform5repairpermintaan.BUDGET = 0;
 
-                    if (linkbtn_filename2.Text == "-")
+                    if (linkbtn_filename2.Text == "-") 
                     {
                         if (btn_uploadfile2.HasFile)
                         {
@@ -7359,7 +7395,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_2 = linkbtn_filename2.Text;
+                        if (btn_uploadfile2.HasFile)
+                        {
+                            int imgSize = btn_uploadfile2.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile2.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile2.PostedFile != null && btn_uploadfile2.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile2.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 2 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_2 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "2" + btn_uploadfile2.FileName;
+                                    btn_uploadfile2.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_2);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_2 = linkbtn_filename2.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_2;
@@ -7415,7 +7487,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_3 = linkbtn_filename3.Text;
+                        if (btn_uploadfile3.HasFile)
+                        {
+                            int imgSize = btn_uploadfile3.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile3.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile3.PostedFile != null && btn_uploadfile3.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile3.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 3 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_3 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "3" + btn_uploadfile3.FileName;
+                                    btn_uploadfile3.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_3);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_3 = linkbtn_filename3.Text;
+                        }
                     }
 
 
@@ -7475,7 +7583,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_4 = linkbtn_filename4.Text;
+                        if (btn_uploadfile4.HasFile)
+                        {
+                            int imgSize = btn_uploadfile4.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile4.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile4.PostedFile != null && btn_uploadfile4.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile4.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 4 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_4 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "4" + btn_uploadfile4.FileName;
+                                    btn_uploadfile4.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_4);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_4 = linkbtn_filename4.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_4;
@@ -7531,7 +7675,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_5 = linkbtn_filename5.Text;
+                        if (btn_uploadfile5.HasFile)
+                        {
+                            int imgSize = btn_uploadfile5.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile5.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile5.PostedFile != null && btn_uploadfile5.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile5.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 5 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_5 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "5" + btn_uploadfile5.FileName;
+                                    btn_uploadfile5.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_5);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_5 = linkbtn_filename5.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_5;
@@ -7587,7 +7767,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_6 = linkbtn_filename6.Text;
+                        if (btn_uploadfile6.HasFile)
+                        {
+                            int imgSize = btn_uploadfile6.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile6.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile6.PostedFile != null && btn_uploadfile6.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile6.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 6 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_6 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "6" + btn_uploadfile6.FileName;
+                                    btn_uploadfile6.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_6);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_6 = linkbtn_filename6.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_6;
@@ -7643,7 +7859,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_7 = linkbtn_filename7.Text;
+                        if (btn_uploadfile7.HasFile)
+                        {
+                            int imgSize = btn_uploadfile7.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile7.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile7.PostedFile != null && btn_uploadfile7.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile7.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 7 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_7 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "7" + btn_uploadfile7.FileName;
+                                    btn_uploadfile7.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_7);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_7 = linkbtn_filename7.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_7;
@@ -7699,7 +7951,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_8 = linkbtn_filename8.Text;
+                        if (btn_uploadfile8.HasFile)
+                        {
+                            int imgSize = btn_uploadfile8.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile8.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile8.PostedFile != null && btn_uploadfile8.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile8.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 8 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_8 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "8" + btn_uploadfile8.FileName;
+                                    btn_uploadfile8.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_8);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_8 = linkbtn_filename8.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_8;
@@ -7755,7 +8043,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_9 = linkbtn_filename9.Text;
+                        if (btn_uploadfile9.HasFile)
+                        {
+                            int imgSize = btn_uploadfile9.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile9.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile9.PostedFile != null && btn_uploadfile9.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile9.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 9 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_9 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "9" + btn_uploadfile9.FileName;
+                                    btn_uploadfile9.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_9);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_9 = linkbtn_filename9.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_9;
@@ -7811,7 +8135,43 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else
                     {
-                        UPLOAD_FILE_PERBAIKAN_10 = linkbtn_filename10.Text;
+                        if (btn_uploadfile10.HasFile)
+                        {
+                            int imgSize = btn_uploadfile10.PostedFile.ContentLength;
+                            string ext = System.IO.Path.GetExtension(this.btn_uploadfile10.PostedFile.FileName).ToLower();
+                            if (btn_uploadfile10.PostedFile != null && btn_uploadfile10.PostedFile.FileName != "")
+                            {
+
+
+                                if (btn_uploadfile10.PostedFile.ContentLength > 3000000)
+                                {
+                                    DivMessage.InnerText = "File 10 is larger than 3MB.";
+                                    DivMessage.Attributes["class"] = "error";
+                                    //DivMessage.Attributes["class"] = "success";
+                                    DivMessage.Visible = true;
+                                    return;
+                                }
+                                //if (ext != ".jpg" || ext != ".png" || ext != ".gif" || ext != ".jpeg")
+                                //{
+                                //    DivMessage.InnerText = "Format File Tidak Ada. Harap File Berformat(.jpg, .png and .gif)";
+                                //    DivMessage.Attributes["class"] = "error";
+                                //    //DivMessage.Attributes["class"] = "success";
+                                //    DivMessage.Visible = true;
+                                //    return;
+                                //}
+
+                                else
+                                {
+                                    UPLOAD_FILE_PERBAIKAN_10 = text_noform.Text + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + "10" + btn_uploadfile10.FileName;
+                                    btn_uploadfile10.PostedFile
+                  .SaveAs(Server.MapPath("~/Uploaded/FileUploadRPR/") + UPLOAD_FILE_PERBAIKAN_10);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            UPLOAD_FILE_PERBAIKAN_10 = linkbtn_filename10.Text;
+                        }
                     }
 
                     trform5repairpermintaan.UPLOAD_FILE = UPLOAD_FILE_PERBAIKAN_10;
