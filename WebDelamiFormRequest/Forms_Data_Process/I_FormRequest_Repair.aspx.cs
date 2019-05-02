@@ -10,6 +10,7 @@ using System.Drawing;
 using WebDelamiFormRequest.DataLayer;
 using WebDelamiFormRequest.Domain;
 using System.Collections;
+using System.Text;
 
 namespace WebDelamiFormRequest.Forms_Data_Process
 {
@@ -17,7 +18,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
     {
         DataTable dt = new DataTable();
         DataTable dtToko = new DataTable();
-        public string KODE_FORM = "FRM-0005";
+        public string KODE_FORM = Common.KD_FORM_REPAIR;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -224,7 +225,24 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
             Session["STORE_TYPE_REQUEST"] = ddljenis.Text;
 
-            Response.Redirect(string.Format("I_FormRequest_Repair_SD.aspx?NO_FORM=" + text_noform.Text + "&STATUS=No"));
+            string url = string.Format("I_FormRequest_Repair_SD.aspx?NO_FORM=" + text_noform.Text + "&STATUS=No");
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<script type = 'text/javascript'>");
+
+            sb.Append("window.open('");
+
+            sb.Append(url);
+
+            sb.Append("');");
+
+            sb.Append("</script>");
+
+            ClientScript.RegisterStartupScript(this.GetType(),
+
+                    "script", sb.ToString());
+            //Response.Redirect();
 
         }
 
@@ -1105,7 +1123,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 //DataSet DsCust = new DataSet();
 
                 string NO_FORM = text_noform.Text;
-                string KODE_FORM = "FRM-0005";
+                string KODE_FORM = Common.KD_FORM_REPAIR;
                 string ID_DEPT = Convert.ToString(Session["ID_DEPT"].ToString());
                 string KD_BRAND = Session["KD_BRAND"].ToString();
                 string PIC_REQUESTER = text_picrequester.Text;
@@ -1341,7 +1359,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                                         TR_FORM_GDR_ACTIVITY trformgdractivity = new TR_FORM_GDR_ACTIVITY();
                                         trformgdractivity.USERNAME = HfUsername.Value;
                                         trformgdractivity.ACTIVITY_TIME = DateTime.Now;
-                                        trformgdractivity.KODE_FORM = "FRM-0005";
+                                        trformgdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                                         trformgdractivity.NO_FORM = NO_FORM;
                                         trformgdractivity.STATUS = EApprovalStatus.OnApprovedHD;
                                         trformgdractivity.DESCRIPTION = "Insert New Data. Status To " + EApprovalStatus.ApprovedHD;
@@ -1438,14 +1456,14 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM5_REPAIR_STORE_DESIGN_DA trform5repairstoredesignda = new DataLayer.TR_FORM5_REPAIR_STORE_DESIGN_DA();
                 DataSet DsSD = new DataSet();
 
-                  TR_FORM5_REPAIR_STORE_DESIGN_DETAIL_DA trform5repairstoredesigndetailda = new DataLayer.TR_FORM5_REPAIR_STORE_DESIGN_DETAIL_DA();
+                TR_FORM5_REPAIR_STORE_DESIGN_DETAIL_DA trform5repairstoredesigndetailda = new DataLayer.TR_FORM5_REPAIR_STORE_DESIGN_DETAIL_DA();
                 DataSet DsSDDetail = new DataSet();
 
                 TR_FORM_GDR_CUST_DA TrFormGdrCust = new DataLayer.TR_FORM_GDR_CUST_DA();
                 DataSet DsCust = new DataSet();
 
                 string NO_FORM = text_noform.Text;
-                string KODE_FORM = "FRM-0005";
+                string KODE_FORM = Common.KD_FORM_REPAIR;
                 string ID_DEPT = Convert.ToString(Session["ID_DEPT"].ToString());
                 //string KD_BRAND = Session["KD_BRAND"].ToString();
                 string JENIS = ddljenis.Text;
@@ -1623,7 +1641,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             TR_FORM_GDR_ACTIVITY trformgdractivity = new TR_FORM_GDR_ACTIVITY();
                             trformgdractivity.USERNAME = HfUsername.Value;
                             trformgdractivity.ACTIVITY_TIME = DateTime.Now;
-                            trformgdractivity.KODE_FORM = "FRM-0005";
+                            trformgdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                             trformgdractivity.NO_FORM = NO_FORM;
                             trformgdractivity.STATUS = STATUS;
                             trformgdractivity.DESCRIPTION = DESCRIPTION;
@@ -1733,7 +1751,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             TR_FORM_GDR_ACTIVITY trformgdractivity = new TR_FORM_GDR_ACTIVITY();
                             trformgdractivity.USERNAME = HfUsername.Value;
                             trformgdractivity.ACTIVITY_TIME = DateTime.Now;
-                            trformgdractivity.KODE_FORM = "FRM-0005";
+                            trformgdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                             trformgdractivity.NO_FORM = NO_FORM;
                             trformgdractivity.STATUS = STATUS;
                             trformgdractivity.DESCRIPTION = DESCRIPTION;
@@ -3144,7 +3162,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = STATUS;
                 TrForm5gdractivity.DESCRIPTION = DESCRIPTION;
@@ -3266,7 +3284,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.ApprovedProject;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.ApprovedHD + " To " + EApprovalStatus.ApprovedProject;
@@ -3390,7 +3408,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.ApprovedBudgetControl;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.ApprovedProject + " To " + EApprovalStatus.ApprovedBudgetControl;
@@ -3512,7 +3530,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.OnWorking;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.ApprovedBudgetControl + " To " + EApprovalStatus.OnWorking;
@@ -3635,7 +3653,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Done;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.OnWorking + " To " + EApprovalStatus.Done;
@@ -3760,7 +3778,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.OnWorking;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.OnWorking + " To " + EApprovalStatus.OnWorking;
@@ -3882,7 +3900,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.ApprovedBMBudget;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.OnApprovedHD + " To " + EApprovalStatus.ApprovedBMBudget;
@@ -4001,7 +4019,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.ApprovedComercialDirectorBudget;
                 TrForm5gdractivity.DESCRIPTION = "Update Status From " + EApprovalStatus.ApprovedBMBudget + " To " + EApprovalStatus.ApprovedComercialDirectorBudget;
@@ -4072,7 +4090,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4135,7 +4153,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4197,7 +4215,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4259,7 +4277,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4321,7 +4339,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4383,7 +4401,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4440,7 +4458,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;
@@ -4567,7 +4585,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                     TrForm5gdractivity.USERNAME = HfUsername.Value;
                     TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                    TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                    TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                     TrForm5gdractivity.NO_FORM = NO_FORM;
                     TrForm5gdractivity.STATUS = EApprovalStatus.OnRevise;
                     TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.OnRevise;
@@ -4699,7 +4717,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                     TrForm5gdractivity.USERNAME = HfUsername.Value;
                     TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                    TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                    TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                     TrForm5gdractivity.NO_FORM = NO_FORM;
                     TrForm5gdractivity.STATUS = EApprovalStatus.OnRevise;
                     TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.OnRevise;
@@ -4862,7 +4880,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                             TrForm5gdractivity.USERNAME = HfUsername.Value;
                             TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                            TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                            TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                             TrForm5gdractivity.NO_FORM = NO_FORM;
                             TrForm5gdractivity.STATUS = EApprovalStatus.OnApprovedBM;
                             TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.OnApprovedBM;
@@ -5012,7 +5030,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                     TrForm5gdractivity.USERNAME = HfUsername.Value;
                     TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                    TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                    TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                     TrForm5gdractivity.NO_FORM = NO_FORM;
                     TrForm5gdractivity.STATUS = EApprovalStatus.OnRevise;
                     TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.OnRevise;
@@ -5989,7 +6007,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_CUST_TEMP_DA TrFormGdrCustTemp = new DataLayer.TR_FORM_GDR_CUST_TEMP_DA();
                 DataSet Ds = new DataSet();
 
-                string KODE_FORM = "FRM-0005";
+                string KODE_FORM = Common.KD_FORM_REPAIR;
 
                 string NO_FORM = text_noform.Text;
                 string KODE_CUST = "";
@@ -6237,7 +6255,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
             try
             {
 
-                string KODE_FORM = "FRM-0005";
+                string KODE_FORM = Common.KD_FORM_REPAIR;
                 string NO_FORM = text_noform.Text;
 
                 LoadDataGridCustCt();
@@ -6322,7 +6340,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         string NAMA_CUST = "";
                         string NAMA_CT = "";
 
-                        KODE_FORM = "FRM-0005";
+                        KODE_FORM = Common.KD_FORM_REPAIR;
                         NO_FORM = text_noform.Text;
                         KODE_CUST = kode_cust;
                         KODE_CT = kode_ct;
@@ -6411,7 +6429,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         string NAMA_CUST = "";
                         string NAMA_CT = "";
 
-                        KODE_FORM = "FRM-0005";
+                        KODE_FORM = Common.KD_FORM_REPAIR;
                         NO_FORM = text_noform.Text;
                         KODE_CUST = kode_cust;
                         KODE_CT = kode_ct;
@@ -6501,7 +6519,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         string NAMA_CUST = "";
                         string NAMA_CT = "";
 
-                        KODE_FORM = "FRM-0005";
+                        KODE_FORM = Common.KD_FORM_REPAIR;
                         NO_FORM = text_noform.Text;
                         KODE_CUST = kode_cust;
                         KODE_CT = kode_ct;
@@ -6591,7 +6609,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         string NAMA_CUST = "";
                         string NAMA_CT = "";
 
-                        KODE_FORM = "FRM-0005";
+                        KODE_FORM = Common.KD_FORM_REPAIR;
                         NO_FORM = text_noform.Text;
                         KODE_CUST = kode_cust;
                         KODE_CT = kode_ct;
@@ -6642,7 +6660,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 string KODE_FORM = "";
                 string NO_FORM = "";
 
-                KODE_FORM = "FRM-0005";
+                KODE_FORM = Common.KD_FORM_REPAIR;
                 NO_FORM = text_noform.Text;
                 TrFormGdrCust.DeleteFilter(string.Format("KODE_FORM = '{0}' AND NO_FORM = '{1}'", KODE_FORM, NO_FORM));
 
@@ -6708,7 +6726,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 //        string NAMA_CUST = "";
                 //        string NAMA_CT = "";
 
-                //        KODE_FORM = "FRM-0005";
+                //        KODE_FORM = Common.KD_FORM_REPAIR;
                 //        NO_FORM = text_noform.Text;
                 //        KODE_CUST = Item.Cells[4].Text;
                 //        KODE_CT = Item.Cells[5].Text;
@@ -7357,7 +7375,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     trform5repairpermintaan.ACTUAL_FINISH_DATE = startdate;
                     trform5repairpermintaan.BUDGET = 0;
 
-                    if (linkbtn_filename2.Text == "-") 
+                    if (linkbtn_filename2.Text == "-")
                     {
                         if (btn_uploadfile2.HasFile)
                         {

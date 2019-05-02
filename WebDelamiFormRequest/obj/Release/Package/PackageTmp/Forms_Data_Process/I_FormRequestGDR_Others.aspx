@@ -326,6 +326,9 @@
                                 <asp:ListItem Text="Opening Counter" Value="OPENING_COUNTER" />
                                 <asp:ListItem Text="Renovasi Counter" Value="RENOVASI_COUNTER" />
                                 <asp:ListItem Text="Existing Counter" Value="EXISTING_COUNTER" />
+                                <asp:ListItem Text="Malaysia Store" Value="MALAYSIA_STORE" />
+                                <asp:ListItem Text="Malaysia Counter" Value="MALAYSIA_COUNTER" />
+                                <asp:ListItem Text="Malaysia Bazzar" Value="MALAYSIA_BAZZAR" />
                                 <asp:ListItem Text="Dealers" Value="DEALERS" Selected="True" />
                                 <asp:ListItem Text="Internal Department" Value="INTERNAL_DEPARTMENT" />
                             </asp:DropDownList>

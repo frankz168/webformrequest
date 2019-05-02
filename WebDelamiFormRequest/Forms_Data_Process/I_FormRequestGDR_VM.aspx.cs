@@ -2325,7 +2325,18 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             {
                                 totalgridjenis = 1;
                             }
-
+                            else if (JENIS == "MALAYSIA_STORE")
+                            {
+                                totalgridjenis = 1;
+                            }
+                            else if (JENIS == "MALAYSIA_COUNTER")
+                            {
+                                totalgridjenis = 1;
+                            }
+                            else if (JENIS == "MALAYSIA_BAZZAR")
+                            {
+                                totalgridjenis = 1;
+                            }
 
 
                             if (totalgridjenis == 1)

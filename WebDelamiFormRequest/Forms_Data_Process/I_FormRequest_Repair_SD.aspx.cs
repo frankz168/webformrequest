@@ -15,7 +15,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
     {
         DataTable dt = new DataTable();
         DataTable dtToko = new DataTable();
-        public string KODE_FORM = "FRM-0005";
+        public string KODE_FORM = Common.KD_FORM_REPAIR;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -485,7 +485,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     CreateNoFormRepairSD();
                 }
 
-                string KODE_FORM = "FRM-0005";
+                string KODE_FORM = Common.KD_FORM_REPAIR;
                 string ID_DEPT = Convert.ToString(Session["KODE_DEPT"].ToString());
                 string KD_BRAND = Session["KD_BRAND"].ToString();
                 string LOCATION = "-";
@@ -722,7 +722,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         TR_FORM_GDR_ACTIVITY trformgdractivity = new TR_FORM_GDR_ACTIVITY();
                         trformgdractivity.USERNAME = HfUsername.Value;
                         trformgdractivity.ACTIVITY_TIME = DateTime.Now;
-                        trformgdractivity.KODE_FORM = "FRM-0005";
+                        trformgdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                         trformgdractivity.NO_FORM = HfNO_FORM.Value;
                         trformgdractivity.STATUS = EApprovalStatus.ApprovedStoreDesign;
                         trformgdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.ApprovedStoreDesign;
@@ -804,7 +804,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_CUST_TEMP_DA TrFormGdrCustTemp = new DataLayer.TR_FORM_GDR_CUST_TEMP_DA();
                 DataSet Ds = new DataSet();
 
-                string KODE_FORM = "FRM-0005";
+                string KODE_FORM = Common.KD_FORM_REPAIR;
 
                 string NO_FORM = HfNO_FORM.Value;
                 string KODE_CUST = "";
@@ -1230,7 +1230,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 TR_FORM_GDR_ACTIVITY TrForm5gdractivity = new TR_FORM_GDR_ACTIVITY();
                 TrForm5gdractivity.USERNAME = HfUsername.Value;
                 TrForm5gdractivity.ACTIVITY_TIME = DateTime.Now;
-                TrForm5gdractivity.KODE_FORM = "FRM-0005";
+                TrForm5gdractivity.KODE_FORM = Common.KD_FORM_REPAIR;
                 TrForm5gdractivity.NO_FORM = NO_FORM_SD;
                 TrForm5gdractivity.STATUS = EApprovalStatus.Cancel;
                 TrForm5gdractivity.DESCRIPTION = "Update Status To " + EApprovalStatus.Cancel;

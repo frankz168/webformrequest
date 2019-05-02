@@ -127,10 +127,10 @@
             }
         }
     </script>
-      <script type="text/javascript">
-          function UploadFileMaterial(fileUpload) {
-              if (fileUpload.value != '') {
-                  document.getElementById("<%=btnUploadMaterial.ClientID %>").click();
+    <script type="text/javascript">
+        function UploadFileMaterial(fileUpload) {
+            if (fileUpload.value != '') {
+                document.getElementById("<%=btnUploadMaterial.ClientID %>").click();
             }
         }
     </script>
@@ -349,6 +349,9 @@
                                 <asp:ListItem Text="Opening Counter" Value="OPENING_COUNTER" />
                                 <asp:ListItem Text="Renovasi Counter" Value="RENOVASI_COUNTER" />
                                 <asp:ListItem Text="Existing Counter" Value="EXISTING_COUNTER" />
+                                <asp:ListItem Text="Malaysia Store" Value="MALAYSIA_STORE" />
+                                <asp:ListItem Text="Malaysia Counter" Value="MALAYSIA_COUNTER" />
+                                <asp:ListItem Text="Malaysia Bazzar" Value="MALAYSIA_BAZZAR" />
                                 <asp:ListItem Text="Dealers" Value="DEALERS" Selected="True" />
                             </asp:DropDownList>
                         </td>
@@ -504,7 +507,7 @@
                         </td>
                         <td class="FV270" colspan="4">
 
-                            <asp:FileUpload ID="btn_uploadfilematerial" runat="server" Text="Upload File material" Font-Size="X-Small"/>
+                            <asp:FileUpload ID="btn_uploadfilematerial" runat="server" Text="Upload File material" Font-Size="X-Small" />
                             <asp:LinkButton ID="link_filenameuploadmaterial" runat="server" Text="-"></asp:LinkButton>
                             <br />
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">

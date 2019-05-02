@@ -52,6 +52,16 @@
 
     <script type="text/javascript">
 
+        function SetTarget() {
+
+            document.forms[0].target = "_blank";
+
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
         function multiplyCalc() {
             var budget1 = document.getElementById('<%= text_budgets1.ClientID%>');
             var budget2 = document.getElementById('<%= text_budgets2.ClientID%>');
@@ -220,7 +230,7 @@
             <h1>FORM REQUEST - REPAIR</h1>
             <hr />
             <br />
-            <asp:Button ID="btn_NewStoreDesign" runat="server" Text="New Store Design" Visible="false" OnClick="btn_NewStoreDesign_Click" />
+            <asp:Button ID="btn_NewStoreDesign" runat="server" Text="New Store Design" Visible="false" OnClick="btn_NewStoreDesign_Click" OnClientClick = "SetTarget();" />
             <asp:Button ID="btn_ViewStoreDesign" runat="server" Text="View Store Design" Visible="false" OnClick="btn_ViewStoreDesign_Click" />
             <div id="DivMessage" runat="server" visible="false">
             </div>
@@ -280,10 +290,10 @@
                             <asp:Label ID="label_requestfor" runat="server" Text="Request For" Font-Size="Small"></asp:Label>
                         </td>
                         <td class="FV270" colspan="3">
-                            <asp:RadioButton ID="radio_relocation" runat="server" GroupName="radio"/>
-                            <asp:Label ID="label_relocation" runat="server" Text="Relocation" Font-Size="Small"></asp:Label>
+                            <asp:RadioButton ID="radio_relocation" runat="server" GroupName="radio" />
+                            <asp:Label ID="label_relocation" runat="server" Text="Relocation Counter" Font-Size="Small"></asp:Label>
                             <asp:RadioButton ID="radio_renovation" runat="server" GroupName="radio" />
-                            <asp:Label ID="label_renovation" runat="server" Text="Renovation" Font-Size="Small"></asp:Label>
+                            <asp:Label ID="label_renovation" runat="server" Text="Renovation Counter" Font-Size="Small"></asp:Label>
                             <asp:RadioButton ID="radio_repair" runat="server" GroupName="radio" />
                             <asp:Label ID="label_repair" runat="server" Text="Repair/Maintenance" Font-Size="Small"></asp:Label>
                             <asp:RadioButton ID="radio_additional" runat="server" GroupName="radio" />

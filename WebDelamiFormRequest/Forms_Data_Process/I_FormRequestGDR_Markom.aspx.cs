@@ -2281,6 +2281,18 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                             {
                                 totalgridjenis = 1;
                             }
+                            else if (JENIS == "MALAYSIA_STORE")
+                            {
+                                totalgridjenis = 1;
+                            }
+                            else if (JENIS == "MALAYSIA_COUNTER")
+                            {
+                                totalgridjenis = 1;
+                            }
+                            else if (JENIS == "MALAYSIA_BAZZAR")
+                            {
+                                totalgridjenis = 1;
+                            }
                             //else if (JENIS == "DIGITAL_MARKETING")
                             //{
                             //    totalgridjenis = 1;
@@ -3510,7 +3522,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 }
                 TrForm2gdr.RFR_LAMPIRAN3 = RFR_LAMPIRAN3;
 
-                if (linkbtn_filename4.Text == "-" || linkbtn_filename4.Text == "") 
+                if (linkbtn_filename4.Text == "-" || linkbtn_filename4.Text == "")
                 {
                     if (btn_uploadfile4.HasFile)
                     {
@@ -3737,7 +3749,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                                     .SaveAs(Server.MapPath("~/Uploaded/FileUploadGD/") + RFR_LAMPIRAN7GD);
                             }
                         }
-                        
+
                     }
                 }
                 else
@@ -4562,7 +4574,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else if (URUTAN == 4)
                     {
-                       
+
                     }
                     else if (URUTAN == 5)
                     {
@@ -4571,7 +4583,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     }
                     else if (URUTAN == 6)
                     {
-                        
+
                     }
                     else if (URUTAN == 7)
                     {
