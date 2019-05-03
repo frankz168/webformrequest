@@ -1658,6 +1658,15 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                                 btn_Reject.Enabled = false;
                                 btn_Cancel.Enabled = false;
                             }
+
+                            if (HfUsername.Value == "Admin")
+                            {
+                                btn_Save.Visible = false;
+                                btn_UpdateSubmit.Enabled = false;
+                                btn_Reject.Visible = true;
+                                btn_Reject.Enabled = true;
+                                btn_Cancel.Enabled = false;
+                            }
                         }
                         else if (URUTAN == 2)
                         {
@@ -4535,6 +4544,12 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         SendEmailAllType();
                     }
 
+                }
+
+                else if (HfUsername.Value == "Admin")
+                {
+                    UpdateStatusCancel();
+                    SendEmailAllType();
                 }
             }
             catch (Exception Ex)

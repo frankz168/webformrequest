@@ -68,6 +68,7 @@
                               <dx:MenuItem Text="REPORT FORM GDR MARKOM" NavigateUrl="~/Forms_Data_Reports/ReportFormGdrMarkom.aspx" Visible="true" Name="D010707" />
                               <dx:MenuItem Text="REPORT FORM GDR OTHERS" NavigateUrl="~/Forms_Data_Reports/ReportFormGdrOthers.aspx" Visible="true" Name="D010708" />
                               <dx:MenuItem Text="REPORT ALL FORM DESIGN" NavigateUrl="~/Forms_Data_Reports/ReportFormAllFormDesign.aspx" Visible="true" Name="D010711" />
+                              <dx:MenuItem Text="REPORT REQUEST APPROVED BAMBANG" NavigateUrl="~/Forms_Data_Reports/ReportPDC_VM.aspx" Visible="false" Name="D010713" />
                           </Items>
                       </dx:MenuItem>
                       <dx:MenuItem Text="REPORT FORM DIGITAL MARKETING" NavigateUrl="~/Forms_Data_Reports/ReportFormDigitalMarketing.aspx" Visible="false" Name="D010710" />

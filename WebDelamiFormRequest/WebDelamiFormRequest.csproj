@@ -375,6 +375,7 @@
     <Content Include="Forms_Data_Reports\ReportFormGdrOthers.aspx" />
     <Content Include="Forms_Data_Reports\ReportFormGdrVM.aspx" />
     <Content Include="Forms_Data_Reports\ReportFormRepair.aspx" />
+    <Content Include="Forms_Data_Reports\ReportPDC_VM.aspx" />
     <Content Include="Forms_Data_Security\Default_Admin.aspx" />
     <Content Include="Forms_Data_Security\Security_Functions.aspx" />
     <Content Include="Forms_Data_Security\Security_User.aspx" />
@@ -710,6 +711,13 @@
     </Compile>
     <Compile Include="Forms_Data_Reports\ReportFormRepair.aspx.designer.cs">
       <DependentUpon>ReportFormRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportPDC_VM.aspx.cs">
+      <DependentUpon>ReportPDC_VM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms_Data_Reports\ReportPDC_VM.aspx.designer.cs">
+      <DependentUpon>ReportPDC_VM.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms_Data_Security\Security_Functions.aspx.cs">
       <DependentUpon>Security_Functions.aspx</DependentUpon>
