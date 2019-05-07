@@ -2682,7 +2682,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 //int ID_DEPT = Convert.ToInt16(Session["ID_DEPT"].ToString());
                 //string KD_BRAND = Session["KD_BRAND"].ToString();
                 DateTime? ALOKASI_BUDGET = DateTime.ParseExact(text_alokasibudget.Text, "yyMM", null);
-                DateTime? JADWAL_IMAGE = string.IsNullOrEmpty(text_jadwalpergantianimage.Text) ? (DateTime?)null : DateTime.Parse(text_jadwalpergantianimage.Text);
+                //DateTime? JADWAL_IMAGE = string.IsNullOrEmpty(text_jadwalpergantianimage.Text) ? (DateTime?)null : DateTime.Parse(text_jadwalpergantianimage.Text);
                 DateTime? JADWAL_ACARABKTOKO = string.IsNullOrEmpty(text_jadwalacarabktoko.Text) ? (DateTime?)null : DateTime.Parse(text_jadwalacarabktoko.Text);
                 string REFERENSI_DESIGN = text_referensidesign.Text;
                 string RFR_LAMPIRAN_STORE = link_filenameuploadstore.Text;
@@ -2752,6 +2752,16 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     JADWAL_ADM_CREATIVE = "1900-01-01";
                 }
 
+                string JADWAL_IMAGE = "";
+                if (text_jadwalpergantianimage.Text != "")
+                {
+                    JADWAL_IMAGE = DateTime.Parse(text_jadwalpergantianimage.Text).ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    JADWAL_IMAGE = "1900-01-01";
+                }
+
 
                 string DIBUAT = text_dibuat.Text;
                 DateTime TGL_DIBUAT = DateTime.Now;
@@ -2778,7 +2788,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 //TrForm2gdr.KD_BRAND = KD_BRAND;
                 TrForm2gdr.DEPT_STORE_MALL = "";
                 TrForm2gdr.ALOKASI_BUDGET = ALOKASI_BUDGET;
-                TrForm2gdr.JADWAL_IMAGE = JADWAL_IMAGE;
+                TrForm2gdr.JADWAL_IMAGE = Convert.ToDateTime(JADWAL_IMAGE);
                 TrForm2gdr.JADWAL_ACARABKTOKO = JADWAL_ACARABKTOKO;
                 TrForm2gdr.REFERENSI_DESIGN = REFERENSI_DESIGN;
 
@@ -5447,7 +5457,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     MS_USER_DA MsUserDA = new MS_USER_DA();
                     DataSet DsUser = new DataSet();
 
-                    string Where = string.Format("KD_JABATAN = 'PDC'");
+                    string Where = string.Format("KD_JABATAN = 'PDC' AND USERNAME = 'PDC.MARKOM'");
                     DsUser = MsUserDA.GetDataFilter(Where);
 
                     if (DsUser.Tables[0].Rows.Count > 0)
@@ -9198,6 +9208,7 @@ namespace WebDelamiFormRequest.Forms_Data_Process
 
                 DataSet Ds = new DataSet();
                 DataLayer.MS_CUST_CT_DA MsCustCt = new DataLayer.MS_CUST_CT_DA();
+                DataLayer.CUST_PTS_DA MsCustPts = new DataLayer.CUST_PTS_DA();
 
                 string jenis = ddljenis.SelectedValue.ToString();
                 string kode_cust = "";
@@ -9892,6 +9903,96 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                         {
                             nama_ct = "";
                         }
+
+                        //int colsCount = dtToko.Columns.Count;
+                        //dtToko.Rows.Add(index, KODE_FORM, NO_FORM, kode_cust, kode_ct, site, nama_cust, nama_ct);
+                        //gvCustCt.DataBind();
+                        int ID = index;
+                        string KODE_CUST = "";
+                        string KODE_CT = "";
+                        string SITE = "";
+                        string NAMA_CUST = "";
+                        string NAMA_CT = "";
+
+                        KODE_FORM = Common.KD_FORM_MARKOM;
+                        NO_FORM = text_noform.Text;
+                        KODE_CUST = kode_cust;
+                        KODE_CT = kode_ct;
+                        SITE = site;
+                        NAMA_CUST = nama_cust;
+                        NAMA_CT = nama_ct;
+
+                        TR_FORM_GDR_CUST_TEMP trformgdrcusttemp = new TR_FORM_GDR_CUST_TEMP();
+                        trformgdrcusttemp.KODE_FORM = KODE_FORM;
+                        trformgdrcusttemp.NO_FORM = NO_FORM;
+                        trformgdrcusttemp.kode_cust = KODE_CUST;
+                        trformgdrcusttemp.kode_ct = KODE_CT;
+                        trformgdrcusttemp.site = SITE;
+                        trformgdrcusttemp.nama_cust = NAMA_CUST;
+                        trformgdrcusttemp.nama_ct = NAMA_CT;
+                        TrFormGdrCustTemp.Insert(trformgdrcusttemp);
+
+                        gvCustCt.DataBind();
+
+
+                    }
+                }
+                else if (jenis == "DEALERS")
+                {
+                    string WhereCustPts = string.Format("kode_cust LIKE '2%' OR kode_cust LIKE '3%'");
+                    Ds = MsCustPts.GetDataFilter(WhereCustPts);
+
+                    int i = 0;
+                    int index = 0;
+                    foreach (DataRow Item in Ds.Tables[0].Rows)
+                    {
+                        index = i;
+                        i++;
+
+                        if (!String.IsNullOrEmpty((Item.Field<String>("kode_cust"))))
+                        {
+                            kode_cust = Item.Field<String>("kode_cust");
+                        }
+                        else
+                        {
+                            kode_cust = "";
+                        }
+
+                        //if (!String.IsNullOrEmpty((Item.Field<String>("kode_ct"))))
+                        //{
+                        //    kode_ct = Item.Field<String>("kode_ct");
+                        //}
+                        //else
+                        //{
+                        //    kode_ct = "";
+                        //}
+
+                        //if (!String.IsNullOrEmpty((Item.Field<String>("site"))))
+                        //{
+                        //    site = Item.Field<String>("site");
+                        //}
+                        //else
+                        //{
+                        //    site = "";
+                        //}
+
+                        if (!String.IsNullOrEmpty((Item.Field<String>("Nama"))))
+                        {
+                            nama_cust = Item.Field<String>("Nama");
+                        }
+                        else
+                        {
+                            nama_cust = "";
+                        }
+
+                        //if (!String.IsNullOrEmpty((Item.Field<String>("nama_ct"))))
+                        //{
+                        //    nama_ct = Item.Field<String>("nama_ct");
+                        //}
+                        //else
+                        //{
+                        //    nama_ct = "";
+                        //}
 
                         //int colsCount = dtToko.Columns.Count;
                         //dtToko.Rows.Add(index, KODE_FORM, NO_FORM, kode_cust, kode_ct, site, nama_cust, nama_ct);
@@ -12361,6 +12462,15 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                     text_tanggalrequired.Text = TGL_REQUIRED;
                 }
 
+                if (PRODUCTION == EYesNo.No && PHOTOGRAPER == EYesNo.Yes && DIGITAL_IMAGING == EYesNo.No)
+                {
+                    Days = 5;
+                    //string s = DateTime.Now.AddDays(7).ToString("dd/MM/yyyy");
+                    DateTime dt = AddBusinessDays(TGL_REQUEST, Days);
+                    TGL_REQUIRED = DateTime.Parse(Convert.ToString(dt)).ToString("yyyy-MM-dd");
+                    text_tanggalrequired.Text = TGL_REQUIRED;
+                }
+
                 if (PRODUCTION == EYesNo.No && PHOTOGRAPER == EYesNo.No && DIGITAL_IMAGING == EYesNo.No)
                 {
                     Days = 6;
@@ -12409,8 +12519,8 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 DaysDI = 0;
                 DaysAdmCreative = DaysPhotoGrapher + 1;
                 DaysFinishDesign = DaysAdmCreative + 5;
-                DaysProduction = DaysFinishDesign + 4;
-                DaysSend = DaysProduction + 3;
+                DaysProduction = DaysFinishDesign + 5;
+                DaysSend = DaysProduction + 4;
                 //string s = DateTime.Now.AddDays(7).ToString("dd/MM/yyyy");
                 DateTime dtphotographer = AddBusinessDays(TGL_REQUEST, DaysPhotoGrapher);
                 //DateTime dtdi = AddBusinessDays(TGL_REQUEST, DaysDI);
@@ -12438,8 +12548,8 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 DaysDI = DaysPhotoGrapher + 2;
                 DaysAdmCreative = DaysDI + 1;
                 DaysFinishDesign = DaysAdmCreative + 5;
-                DaysProduction = DaysFinishDesign + 4;
-                DaysSend = DaysProduction + 3;
+                DaysProduction = DaysFinishDesign + 5;
+                DaysSend = DaysProduction + 4;
                 //string s = DateTime.Now.AddDays(7).ToString("dd/MM/yyyy");
                 DateTime dtphotographer = AddBusinessDays(TGL_REQUEST, DaysPhotoGrapher);
                 DateTime dtdi = AddBusinessDays(TGL_REQUEST, DaysDI);
@@ -12467,8 +12577,8 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 DaysDI = DaysPhotoGrapher + 2;
                 DaysAdmCreative = DaysDI + 1;
                 DaysFinishDesign = DaysAdmCreative + 5;
-                DaysProduction = DaysFinishDesign + 4;
-                DaysSend = DaysProduction + 3;
+                DaysProduction = DaysFinishDesign + 5;
+                DaysSend = DaysProduction + 4;
                 //string s = DateTime.Now.AddDays(7).ToString("dd/MM/yyyy");
                 DateTime dtphotographer = AddBusinessDays(TGL_REQUEST, DaysPhotoGrapher);
                 DateTime dtdi = AddBusinessDays(TGL_REQUEST, DaysDI);
@@ -12496,8 +12606,8 @@ namespace WebDelamiFormRequest.Forms_Data_Process
                 DaysDI = 0;
                 DaysAdmCreative = DaysDI + 1;
                 DaysFinishDesign = DaysAdmCreative + 5;
-                DaysProduction = DaysFinishDesign + 4;
-                DaysSend = DaysProduction + 3;
+                DaysProduction = DaysFinishDesign + 5;
+                DaysSend = DaysProduction + 4;
                 //string s = DateTime.Now.AddDays(7).ToString("dd/MM/yyyy");
                 DateTime dtphotographer = AddBusinessDays(TGL_REQUEST, DaysPhotoGrapher);
                 DateTime dtdi = AddBusinessDays(TGL_REQUEST, DaysDI);

@@ -29,8 +29,12 @@ namespace WebDelamiFormRequest.Forms_Data_Reports
             HfKD_BRAND.Value = Session["KD_BRAND"].ToString();
 
             if (HfID_DEPT.Value == "01,02,03,04,05")
+            //if (HfID_DEPT.Value == "01,02,03,04,05,36,37,42")
             {
-                HfUsername.Value = "adm.maintenance";
+                if (HfUsername.Value != "BudgetControl" && HfUsername.Value != "Store.Design" && HfUsername.Value != "Boysanto")
+                {
+                    HfUsername.Value = "adm.maintenance";
+                }
             }
 
             //if (HfID_DEPT.Value == "34")

@@ -567,6 +567,7 @@
     </Compile>
     <Compile Include="DataLayer\BRAND_DA.cs" />
     <Compile Include="DataLayer\Common\ExecutionResult.cs" />
+    <Compile Include="DataLayer\CUST_PTS_DA.cs" />
     <Compile Include="DataLayer\MS_FUNCTIONS_DA.cs" />
     <Compile Include="DataLayer\MS_USER_PROFILE_DA.cs" />
     <Compile Include="DataLayer\MS_USER_PROFILE_TO_FUNCTIONS_DA .cs" />
@@ -606,6 +607,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Domain\CUST_PTS.cs" />
     <Compile Include="Domain\MS_FUNCTIONS.cs" />
     <Compile Include="Domain\MS_USER_PROFILE.cs" />
     <Compile Include="Domain\MS_USER_PROFILE_TO_FUNCTIONS.cs" />

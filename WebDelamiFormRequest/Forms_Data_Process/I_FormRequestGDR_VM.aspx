@@ -352,7 +352,8 @@
                                 <asp:ListItem Text="Malaysia Store" Value="MALAYSIA_STORE" />
                                 <asp:ListItem Text="Malaysia Counter" Value="MALAYSIA_COUNTER" />
                                 <asp:ListItem Text="Malaysia Bazzar" Value="MALAYSIA_BAZZAR" />
-                                <asp:ListItem Text="Dealers" Value="DEALERS" Selected="True" />
+                                <asp:ListItem Text="Dealers" Value="DEALERS" />
+                                <asp:ListItem Text="NO STORE" Value="NO_STORE" Selected="True" />
                             </asp:DropDownList>
                         </td>
 
@@ -483,9 +484,9 @@
                         </td>
                         <td class="FN150">
                             <asp:Label ID="label_jadwalpergantianimage" runat="server" Text="The last schedule for changing images: (*)"></asp:Label>
-                            <asp:RadioButton ID="radio_yesjadwalpergantianimage" runat="server" GroupName="radioimage" OnCheckedChanged="radio_yesjadwalpergantianimage_CheckedChanged" Checked="true" AutoPostBack="true" />
+                            <asp:RadioButton ID="radio_yesjadwalpergantianimage" runat="server" GroupName="radioimage" OnCheckedChanged="radio_yesjadwalpergantianimage_CheckedChanged" Checked="false" AutoPostBack="true" />
                             <asp:Label ID="label_yesjadwalpergantianimage" runat="server" Text="Yes" Font-Size="Small"></asp:Label>
-                            <asp:RadioButton ID="radio_nojadwalpergantianimage" runat="server" GroupName="radioimage" OnCheckedChanged="radio_nojadwalpergantianimage_CheckedChanged" Checked="false" AutoPostBack="true" />
+                            <asp:RadioButton ID="radio_nojadwalpergantianimage" runat="server" GroupName="radioimage" OnCheckedChanged="radio_nojadwalpergantianimage_CheckedChanged" Checked="true" AutoPostBack="true" />
                             <asp:Label ID="label_nojadwalpergantianimage" runat="server" Text="No" Font-Size="Small"></asp:Label>
                         </td>
                         <asp:Panel ID="Pnl_JadwalPergantianImage" runat="server" Visible="false">
